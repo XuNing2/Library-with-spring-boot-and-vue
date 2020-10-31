@@ -1,7 +1,17 @@
 package com.example.demo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class User {
-    int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
     String username;
     String password;
 
