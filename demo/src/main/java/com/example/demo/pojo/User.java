@@ -12,8 +12,11 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    String username;
-    String password;
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
     public int getId() {
         return id;

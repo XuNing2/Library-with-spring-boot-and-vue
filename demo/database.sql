@@ -43,7 +43,7 @@ CREATE TABLE `book` (
   `author` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `press` varchar(255) DEFAULT NULL,
-  `category_id` int(11) UNSIGNED DEFAULT NULL,
+  `cate_id` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
   KEY `book_type_on_id`(`category_id`),
   CONSTRAINT `book_type_on_id` FOREIGN KEY (`category_id`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -59,11 +59,9 @@ INSERT INTO `book` VALUES ('1', 'lzh', '帅的定义', '华南理工大学出版
 -- ----------------------------
 DROP TABLE IF EXISTS `borrowlist`;
 CREATE TABLE `borrowlist` (
-  `id` int(11) unsigned NOT NULL, 
   `b_id` int(11) unsigned NOT NULL,
   `u_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-  KEY `borrowed_book_on_id`(`b_id`),
+  PRIMARY KEY (`b_id`)
   KEY `borrowed_user_on_id`(`u_id`),
   CONSTRAINT `borrowed_book_on_id` FOREIGN KEY (`b_id`) REFERENCES `book`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
   CONSTRAINT `borrowed_user_on_id` FOREIGN KEY (`u_id`) REFERENCES `user`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -72,4 +70,4 @@ CREATE TABLE `borrowlist` (
 -- ----------------------------
 -- Records of borrowlist
 -- ----------------------------
-INSERT INTO `borrowlist` VALUES ('1', '1', '1');
+INSERT INTO `borrowlist` VALUES ('1', '1');
