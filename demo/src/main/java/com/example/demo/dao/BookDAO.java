@@ -7,13 +7,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BookDAO extends JpaRepository<Book, Integer>{
+    //通过bookid查询书
     Book findById(int id);
 
+    //通过类别查询
     List<Book> findAllByCategory(Category category);
 
+    //通过出版社查询
     List<Book> findAllByPressLike(String press);
 
+    //通过书名或者作者名查询、模糊查询
     List<Book> findAllByTitleLikeOrAuthorLike(String title, String author);
 
+    //通过bookid删除书
     void deleteById(int id);
 }
