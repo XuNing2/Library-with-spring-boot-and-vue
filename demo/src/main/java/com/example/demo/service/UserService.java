@@ -1,21 +1,30 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.dao.UserDAO;
 import com.example.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class UserService {
     @Autowired
     UserDAO userDAO;
+
+    public List<User> getAll() {
+        return userDAO.findAll();
+    }
+    
     
     public boolean isExist(String username) {
-        User user = getByName(username);
+        User user = getByUsername(username);
         return null!=user;
     }
 
-    public User getByName(String username) {
+    public User getByUsername(String username) {
         return userDAO.findByUsername(username);
     }
 
@@ -24,6 +33,13 @@ public class UserService {
     }
 
     public void add(User user) {
+        if(!isExist(user.getUsername()))
+            userDAO.save(user);
+        else
+            System.out.print("该用户已存在！");
+    }
+
+    public void update(User user) {
         userDAO.save(user);
     }
 

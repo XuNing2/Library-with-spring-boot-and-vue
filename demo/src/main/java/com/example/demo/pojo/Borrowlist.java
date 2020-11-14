@@ -15,6 +15,9 @@ public class Borrowlist {
     @Column(name = "u_id")
     private User user;
 
+    @Column(name = "havereturn")
+    private boolean havereturn;
+
     public Book getBook() {
         return book;
     }
@@ -29,6 +32,14 @@ public class Borrowlist {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isHavereturn() {
+        return havereturn;
+    }
+
+    public void setHavereturn(boolean havereturn) {
+        this.havereturn = havereturn;
     }
 
     
