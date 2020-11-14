@@ -1,13 +1,13 @@
 <template>
-  <el-container>
-       <!-- style="width: 200px;margin-top: 20px" -->
+  <!-- <el-container>
     <el-aside style="width: 200px;margin-top: 20px">
-      <!-- <switch></switch> -->
+      <!-- <switch></switch> 
       <SideMenu></SideMenu>
     </el-aside>
     <el-main>
     </el-main>
-  </el-container>
+  </el-container> -->
+  <SideMenu></SideMenu>
 </template>
 
 <script>

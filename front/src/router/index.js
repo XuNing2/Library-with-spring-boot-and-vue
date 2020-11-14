@@ -80,5 +80,20 @@ export default new VueRouter({
       name: 'Login',
       component: Login
     }
+    // {
+    //   path: '/personalcenter',
+    //   name: 'PersonalCenter',
+    //   component: PersonalCenter,
+    //   meta: {
+    //     requireAuth: true
+    //   },
+    //   children: [
+    //     {
+    //       path: '/personalcenter/PI',
+    //       name: 'PersonalInformation',
+    //       component: 
+    //     }
+    //   ]
+    // }
   ]
 })
