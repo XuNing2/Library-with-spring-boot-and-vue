@@ -3,10 +3,11 @@ package com.example.demo.dao;
 import com.example.demo.pojo.Book;
 import com.example.demo.pojo.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public interface BookDAO extends JpaRepository<Book, Integer>{
+public interface BookDAO extends JpaRepository<Book, Integer>,JpaSpecificationExecutor<Book>{
     //通过bookid查询书
     Book findById(int id);
 
