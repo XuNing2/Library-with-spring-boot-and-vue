@@ -33,7 +33,7 @@
 
 <!--
 <template>
-  <el-card>
+  <el-card>//push
       用户名:<input type="text" v-model="registerForm.username" placeholder="请输入用户名"/>
       <br><br>
       密码： <input type="password" v-model="registerForm.password" placeholder="请输入密码"/>
