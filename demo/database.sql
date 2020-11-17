@@ -108,14 +108,13 @@ INSERT INTO `borrowlist` VALUES ('3', '2', '2020.11.13', '0');
 CREATE TABLE `permission` (
   `permissionID` int(11) unsigned NOT NULL,
   `actualPermissionID` varchar(255) DEFAULT NULL,
-  `roleName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`permissionID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of permission
 -- ----------------------------
-INSERT INTO `permission` VALUES ('1', './sample','管理员');
+INSERT INTO `permission` VALUES ('1', './sample');
 
 
 
@@ -125,6 +124,7 @@ INSERT INTO `permission` VALUES ('1', './sample','管理员');
 CREATE TABLE `role` (
   `roleID` int(11) unsigned NOT NULL,
   `permissionID` int(11) unsigned NOT NULL,
+  `roleName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`roleID`),
   CONSTRAINT `permission_ID` FOREIGN KEY (`permissionID`) REFERENCES `permission`(`permissionID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -132,7 +132,7 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', '1');
+INSERT INTO `role` VALUES ('1', '1','管理员');
 
 
 -- ----------------------------
