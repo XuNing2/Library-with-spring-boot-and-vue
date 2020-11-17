@@ -105,6 +105,7 @@
         loading: false
       }
     },
+    //push
     methods: {
       register () {
         var _this = this
