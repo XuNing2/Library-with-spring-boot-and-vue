@@ -6,7 +6,7 @@ import AppIndex from '../components/home/AppIndex.vue'
 import Login from '../components/Login.vue'
 import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
-
+import Register from '../components/Register.vue'
 Vue.use(VueRouter)
 
 // const routes = [
@@ -72,7 +72,16 @@ export default new VueRouter({
           meta: {
             requireAuth: true
           }
-        }
+        },
+          {
+            path: '/register',
+            name: 'Register',
+            component: Register,
+            meta: {
+              requireAuth: true
+            }
+          }
+        
       ]
     },
     {
