@@ -32,6 +32,7 @@
                   {id:3,idView:require("../../../assets/P4.jpg")},
                    ]
       }
+  
     },
     methods: {
       
