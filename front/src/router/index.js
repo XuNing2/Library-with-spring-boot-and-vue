@@ -6,6 +6,7 @@ import AppIndex from '../components/home/AppIndex.vue'
 import Login from '../components/Login.vue'
 import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
+import LibraryIndex from '../components/library/LibraryIndex'
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,14 @@ export default new VueRouter({
           path: '/personalcenter',
           name: 'PersonalCenter',
           component: PersonalCenter,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/library',
+          name: 'Library',
+          component: LibraryIndex,
           meta: {
             requireAuth: true
           }
