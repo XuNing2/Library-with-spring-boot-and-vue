@@ -36,7 +36,7 @@
       init(){
         this.username = localStorage.getItem('username');
         this.$axios
-        .get('/personalcenter state=pi',{username: this.username})
+        .get('/personalcenter_state=pi',{username: this.username})
         .then((successResponse => {
             if (successResponse.data.code === 200) {
               document.getElementById("name").value = this.username;
@@ -54,7 +54,7 @@
       },
       submit(){
         this.$axios
-        .post('/personalcenter state=ci',{
+        .post('/personalcenter_state=ci',{
           name: this.info.name,
           telephone: this.info.telephone,
           role: this.info.role
