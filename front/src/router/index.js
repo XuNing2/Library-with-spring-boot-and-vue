@@ -6,10 +6,14 @@ import AppIndex from '../components/home/AppIndex.vue'
 import Login from '../components/Login.vue'
 import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
+<<<<<<< HEAD
+import Register from '../components/Register.vue'
+=======
 import LibraryIndex from '../components/library/LibraryIndex'
 
+>>>>>>> 45f81d3229ed02d9fcb80962053d8369e07f2070
 Vue.use(VueRouter)
-
+//pus
 // const routes = [
 //   // {
 //   //   path: '/',
@@ -74,6 +78,17 @@ export default new VueRouter({
             requireAuth: true
           }
         },
+<<<<<<< HEAD
+          {
+            path: '/register',
+            name: 'Register',
+            component: Register,
+            meta: {
+              requireAuth: true
+            }
+          }
+        
+=======
         {
           path: '/library',
           name: 'Library',
@@ -82,7 +97,16 @@ export default new VueRouter({
             requireAuth: true
           }
         }
+>>>>>>> 45f81d3229ed02d9fcb80962053d8369e07f2070
       ]
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/login',
