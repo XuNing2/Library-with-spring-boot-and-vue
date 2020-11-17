@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS `borrowlist`;
 DROP TABLE IF EXISTS `book`;
 DROP TABLE IF EXISTS `category`;
 DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `rolePermission`;
+DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `permission`;
 
 -- ----------------------------
 -- Table structure for user

@@ -30,21 +30,15 @@ class DemoApplicationTests {
 	@Autowired
 	UserDAO userDAO;
 
-<<<<<<< HEAD
-=======
 	@Autowired
 	CategoryService categoryService;
 
 	@Autowired
 	BookService bookService;
 
-<<<<<<< HEAD
 	@Autowired
 	BorrowlistDAO borrowlistDAO;
 
-=======
->>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
->>>>>>> 57296317f41afa77c3b0071d7de4a4d78099d17b
 	@Test
 	void contextLoads() {
 
@@ -69,10 +63,9 @@ class DemoApplicationTests {
 		// bookDAO.deleteById(4);
 		// User user = userDAO.findById(5);
 		// User user = userDAO.findByUsername("lj");
-<<<<<<< HEAD
-		Category category = categoryDAO.findById(3);
-		System.out.println(category.getName());
-=======
+		// Category category = categoryDAO.findById(3);
+		// System.out.println(category.getName());
+
 		// Category category = categoryService.getById(3);
 		// // Category category = new Category();
 		// // category.setId(8);
@@ -91,20 +84,20 @@ class DemoApplicationTests {
 		// 	borrowlistDAO.delete(borrowlist);
 		// }
 		
-		// Borrowlist borrowlist = new Borrowlist();
-		// borrowlist.setBook(1);
-		// borrowlist.setUser(1);
-		// borrowlist.setDate("2020.11.16");
-		// borrowlist.setHavereturn(false);
-		// borrowlistDAO.save(borrowlist);
-		// List<Borrowlist> booklists = borrowlistDAO.findAll();
-		// if(booklists.size() == 0){
-		// 	System.out.println("没有对象！");
-		// }
-		// for(Borrowlist booklist:booklists){
-		// 	Book book = bookDAO.findById(booklist.getBook());
-		// 	System.out.println(book.getTitle());
-		// }
+		Borrowlist borrowlist = new Borrowlist();
+		borrowlist.setBook(1);
+		borrowlist.setUser(1);
+		borrowlist.setDate("2020.11.16");
+		borrowlist.setHavereturn(false);
+		borrowlistDAO.save(borrowlist);
+		List<Borrowlist> booklists = borrowlistDAO.findAll();
+		if(booklists.size() == 0){
+			System.out.println("没有对象！");
+		}
+		for(Borrowlist booklist:booklists){
+			Book book = bookDAO.findById(booklist.getBook());
+			System.out.println(book.getTitle());
+		}
 
 		// bookDAO.deleteById(2);
 		// List<Book> books = bookDAO.findAll();
@@ -113,7 +106,6 @@ class DemoApplicationTests {
 		// }
 
 		
->>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
 		System.out.print("1");
 	}
 
