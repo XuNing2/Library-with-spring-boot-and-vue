@@ -26,6 +26,7 @@
   export default{
     data(){
       return {
+
         imagesbox:[{id:0,idView:require("../../../assets/P1.jpg")}, 
                    {id:1,idView:require("../../../assets/P2.jpg")},
                   {id:2,idView:require("../../../assets/P3.jpg")},
@@ -33,7 +34,9 @@
                    ]
       }
   
-    },
+
+      },
+
     methods: {
       
     },
