@@ -80,7 +80,7 @@ CREATE TABLE `borrowlist` (
   `u_id` int(11) unsigned NOT NULL,
   `date` varchar(255) NOT NULL,
   `havereturn` boolean DEFAULT FALSE,
-  PRIMARY KEY (`b_id`),
+  PRIMARY KEY (`b_id`, `u_id`, `date`),
   Key `borrowed_book_on_id`(`b_id`),
   KEY `borrowed_user_on_id`(`u_id`),
   CONSTRAINT `borrowed_book_on_id` FOREIGN KEY (`b_id`) REFERENCES `book`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -91,3 +91,10 @@ CREATE TABLE `borrowlist` (
 -- Records of borrowlist
 -- ----------------------------
 INSERT INTO `borrowlist` VALUES ('1', '1', '2020.11.15', '0');
+INSERT INTO `borrowlist` VALUES ('1', '3', '2020.11.15', '1');
+INSERT INTO `borrowlist` VALUES ('1', '2', '2020.11.16', '0');
+INSERT INTO `borrowlist` VALUES ('2', '1', '2020.11.17', '1');
+INSERT INTO `borrowlist` VALUES ('2', '2', '2020.11.16', '1');
+INSERT INTO `borrowlist` VALUES ('3', '1', '2020.11.18', '1');
+INSERT INTO `borrowlist` VALUES ('2', '3', '2020.11.19', '0');
+INSERT INTO `borrowlist` VALUES ('3', '2', '2020.11.13', '0');
