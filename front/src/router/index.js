@@ -8,7 +8,7 @@ import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
 import Register from '../components/Register.vue'
 Vue.use(VueRouter)
-//push
+//pus
 // const routes = [
 //   // {
 //   //   path: '/',
