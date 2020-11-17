@@ -1,4 +1,4 @@
-y<template>
+<template>
   <el-card>
       用户名:<input type="text" v-model="loginForm.username" placeholder="请输入用户名"/>
       <br><br>
@@ -9,7 +9,6 @@ y<template>
 </template>
 
 <script>
-
   export default {
     name: 'Login',
     data () {
@@ -30,7 +29,8 @@ y<template>
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              this.$router.replace({path: '/index'})
+              this.$router.replace({path: '/index'});
+              localStorage.setItem('username',this.loginForm.username)
             }
           })
           .catch(failResponse => {
