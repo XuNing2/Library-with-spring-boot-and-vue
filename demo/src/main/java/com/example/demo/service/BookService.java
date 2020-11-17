@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+<<<<<<< HEAD
+public class BookService {
+    
+=======
 import java.util.List;
 
 import com.example.demo.dao.BookDAO;
@@ -45,4 +49,5 @@ public class BookService {
         bookDAO.save(book);
     }
 
+>>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
 }
