@@ -26,13 +26,25 @@
   export default{
     data(){
       return {
+<<<<<<< HEAD
          imagesbox:[{id:0,idView:require("../../../assets/P1.jpg")}, 
                    {id:1,idView:require("../../../assets/P2.jpg")},
                   {id:2,idView:require("../../../assets/P3.jpg")},
                   {id:3,idView:require("../../../assets/P4.jpg")},
                    ]
+=======
+
+        imagesbox:[{id:0,idView:require("../../../assets/P1.jpg")}, 
+                   {id:1,idView:require("../../../assets/P2.jpg")},
+                  {id:2,idView:require("../../../assets/P3.jpg")},
+                  {id:3,idView:require("../../../assets/P4.jpg")},
+                   ]
+>>>>>>> 615a6ab944ca1d18a26069460f20d9af6e54bfd7
       }
-    },
+  
+
+      },
+
     methods: {
       
     },
