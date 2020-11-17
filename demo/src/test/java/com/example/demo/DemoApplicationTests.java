@@ -10,6 +10,7 @@ import com.example.demo.pojo.Book;
 import com.example.demo.pojo.Borrowlist;
 import com.example.demo.pojo.Category;
 import com.example.demo.pojo.User;
+
 import com.example.demo.service.BookService;
 import com.example.demo.service.CategoryService;
 
@@ -29,15 +30,21 @@ class DemoApplicationTests {
 	@Autowired
 	UserDAO userDAO;
 
+<<<<<<< HEAD
+=======
 	@Autowired
 	CategoryService categoryService;
 
 	@Autowired
 	BookService bookService;
 
+<<<<<<< HEAD
 	@Autowired
 	BorrowlistDAO borrowlistDAO;
 
+=======
+>>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
+>>>>>>> 57296317f41afa77c3b0071d7de4a4d78099d17b
 	@Test
 	void contextLoads() {
 
@@ -62,6 +69,10 @@ class DemoApplicationTests {
 		// bookDAO.deleteById(4);
 		// User user = userDAO.findById(5);
 		// User user = userDAO.findByUsername("lj");
+<<<<<<< HEAD
+		Category category = categoryDAO.findById(3);
+		System.out.println(category.getName());
+=======
 		// Category category = categoryService.getById(3);
 		// // Category category = new Category();
 		// // category.setId(8);
@@ -102,6 +113,7 @@ class DemoApplicationTests {
 		// }
 
 		
+>>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
 		System.out.print("1");
 	}
 

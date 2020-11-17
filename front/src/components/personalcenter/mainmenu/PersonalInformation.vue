@@ -1,31 +1,72 @@
 <template>
+  <el-container>
   <table class="white-pink">
     <label>
       <span>姓名 :</span>
-      <input id= "name" name="name" />
+      <input id= "name" name="name" v-model="info.name" :readonly="status"/>
       <span>电话 :</span>
-      <input id= "telephone" name="telephone" />
+      <input id= "telephone" name="telephone" v-model="info.telephone" :readonly="status"/>
       <span>角色 :</span>
-      <input id= "role" name="role" />
+      <input id= "role" name="role" v-model="info.role" :readonly="status"/>
     </label>
-    <button onclick="change()">修改个人信息</button>
+    <el-button @click="change()">修改个人信息</el-button>
+    <el-button native-type='submit' id="submit" @click="submit()" :disabled="submit">提交个人信息</el-button>
   </table>
+  </el-container>
 </template>
 
 <script>
   export default {
-    data() {
-      document.getElementById('name').value='王小虎';
+    data(){
       return {
-          name: '王小虎',
-          telephone: '18012345678',
-          role: '用户',
-          status: true
+        status: true,
+        submit: true,
+        username: "",
+        info: {
+          name: '',
+          telephone: '',
+          role: ''
+        }
+      }
+    },
+    mounted:function() {
+      this.init();
+    },
+    methods: {
+      init(){
+        this.username = localStorage.getItem('username');
+        this.$axios
+        .get('/personalcenter_state=pi',{username: this.username})
+        .then((successResponse => {
+            if (successResponse.data.code === 200) {
+              document.getElementById("name").value = this.username;
+              document.getElementById("telephone").value = successResponse.data.telephone;
+              document.getElementById("role").value = successResponse.data.role;
+            }
+          }))
+        document.getElementById("name").value = this.username;
+        document.getElementById("telephone").value = "18012345678";
+        document.getElementById("role").value = "读者";
+      },
+      change(){
+        this.status = false;
+        this.submit = false;
+      },
+      submit(){
+        this.$axios
+        .post('/personalcenter_state=ci',{
+          name: this.info.name,
+          telephone: this.info.telephone,
+          role: this.info.role
+        })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+          }
+        })
+        .catch(failResponse => {
+        })
       }
     }
-  }
-  function change(){
-    document.getElementById("role").value = document.getElementById("name").value;
   }
 </script>
 
