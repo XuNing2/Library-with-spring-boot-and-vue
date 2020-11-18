@@ -12,6 +12,7 @@ import com.example.demo.pojo.Category;
 import com.example.demo.pojo.User;
 
 import com.example.demo.service.BookService;
+import com.example.demo.service.BorrowlistService;
 import com.example.demo.service.CategoryService;
 
 import org.junit.jupiter.api.Test;
@@ -39,8 +40,11 @@ class DemoApplicationTests {
 	@Autowired
 	BorrowlistDAO borrowlistDAO;
 
+	@Autowired
+	BorrowlistService borrowlistService;
+
 	@Test
-	void contextLoads() {
+	void testBook() {
 
 		// Book book = new Book();
 		// book.setAuthor("lzh");
@@ -79,6 +83,19 @@ class DemoApplicationTests {
 		// for(Book book:books){
 		// 	System.out.println(book.getTitle());
 		// }
+
+		// bookDAO.deleteById(2);
+		// List<Book> books = bookDAO.findAll();
+		// for(Book o: books){
+		// 	System.out.println(o.getTitle());
+		// }
+
+		
+		System.out.print("1");
+	}
+
+	@Test
+	void testBorrowlist(){
 		// List<Borrowlist> borrowlists = borrowlistDAO.findByUserAndBook(1, 1);
 		// for(Borrowlist borrowlist:borrowlists){
 		// 	borrowlistDAO.delete(borrowlist);
@@ -89,23 +106,15 @@ class DemoApplicationTests {
 		borrowlist.setUser(1);
 		borrowlist.setDate("2020.11.16");
 		borrowlist.setHavereturn(false);
-		borrowlistDAO.save(borrowlist);
-		List<Borrowlist> booklists = borrowlistDAO.findAll();
-		if(booklists.size() == 0){
-			System.out.println("没有对象！");
-		}
-		for(Borrowlist booklist:booklists){
-			Book book = bookDAO.findById(booklist.getBook());
-			System.out.println(book.getTitle());
-		}
-
-		// bookDAO.deleteById(2);
-		// List<Book> books = bookDAO.findAll();
-		// for(Book o: books){
-		// 	System.out.println(o.getTitle());
+		borrowlistService.add(borrowlist);
+		// List<Borrowlist> booklists = borrowlistDAO.findAll();
+		// if(booklists.size() == 0){
+		// 	System.out.println("没有对象！");
 		// }
-
-		
+		// for(Borrowlist booklist:booklists){
+		// 	Book book = bookDAO.findById(booklist.getBook());
+		// 	System.out.println(book.getTitle());
+		// }
 		System.out.print("1");
 	}
 
