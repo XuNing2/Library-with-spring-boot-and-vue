@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row style="height: 840px;">
-      <!--<search-bar></search-bar>-->
+      <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
       <el-tooltip effect="dark" placement="right"
                   v-for="item in books"
                   :key="item.id">
@@ -25,20 +25,24 @@
           <div class="author">{{item.author}}</div>
         </el-card>
       </el-tooltip>
+      <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
     </el-row>
     <el-row>
       <el-pagination
-        :current-page="1"
-        :page-size="10"
-        :total="20">
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size="pagesize"
+        :total="books.length">
       </el-pagination>
     </el-row>
   </div>
 </template>
 
 <script>
+  import SearchBar from './SearchBar'
   export default {
     name: 'Books',
+    components: {SearchBar},
     data () {
       return {
         books: [
@@ -50,8 +54,37 @@
             press: '上海译文出版社',
             abs: '故事讲述主角纠缠在情绪不稳定且患有精神疾病的直子和开朗活泼的小林绿子之间，展开了自我成长的旅程。自该书在日本问世，截止2012年在日本共销出1500余万册。'
           }
-        ]
+        ],
+        currentPage: 1,
+        pagesize: 17
       }
+    },
+    mounted: function () {
+      this.loadBooks()
+    },
+    methods: {
+      loadBooks () {
+        var _this = this
+        this.$axios.get('/books').then(resp => {
+          if (resp && resp.status === 200) {
+            _this.books = resp.data
+          }
+        })
+      },
+      handleCurrentChange: function (currentPage) {
+        this.currentPage = currentPage
+        console.log(this.currentPage)
+      },
+      searchResult () {
+        var _this = this
+        this.$axios
+          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
+          }).then(resp => {
+          if (resp && resp.status === 200) {
+            _this.books = resp.data
+          }
+        })
+      }   
     }
   }
 </script>

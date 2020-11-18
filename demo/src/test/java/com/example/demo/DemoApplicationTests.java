@@ -3,17 +3,17 @@ package com.example.demo;
 import java.util.List;
 
 import com.example.demo.dao.BookDAO;
+import com.example.demo.dao.BorrowlistDAO;
 import com.example.demo.dao.CategoryDAO;
 import com.example.demo.dao.UserDAO;
 import com.example.demo.pojo.Book;
+import com.example.demo.pojo.Borrowlist;
 import com.example.demo.pojo.Category;
 import com.example.demo.pojo.User;
-<<<<<<< HEAD
 
-=======
 import com.example.demo.service.BookService;
+import com.example.demo.service.BorrowlistService;
 import com.example.demo.service.CategoryService;
->>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +31,20 @@ class DemoApplicationTests {
 	@Autowired
 	UserDAO userDAO;
 
-<<<<<<< HEAD
-=======
 	@Autowired
 	CategoryService categoryService;
 
 	@Autowired
 	BookService bookService;
 
->>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
+	@Autowired
+	BorrowlistDAO borrowlistDAO;
+
+	@Autowired
+	BorrowlistService borrowlistService;
+
 	@Test
-	void contextLoads() {
+	void testBook() {
 
 		// Book book = new Book();
 		// book.setAuthor("lzh");
@@ -64,25 +67,54 @@ class DemoApplicationTests {
 		// bookDAO.deleteById(4);
 		// User user = userDAO.findById(5);
 		// User user = userDAO.findByUsername("lj");
-<<<<<<< HEAD
-		Category category = categoryDAO.findById(3);
-		System.out.println(category.getName());
-=======
+		// Category category = categoryDAO.findById(3);
+		// System.out.println(category.getName());
+
 		// Category category = categoryService.getById(3);
 		// // Category category = new Category();
 		// // category.setId(8);
 		// category.setName("教科书");
 		// categoryService.update(category);
 		
-		List<Book> books = bookService.listByTitleOrAuthor("如何");
-		if(books.size() == 0){
-			System.out.println("没有对象！");
-		}
-		for(Book book:books){
-			System.out.println(book.getTitle());
-		}
+		// List<Book> books = bookService.listByTitleOrAuthor("如何");
+		// if(books.size() == 0){
+		// 	System.out.println("没有对象！");
+		// }
+		// for(Book book:books){
+		// 	System.out.println(book.getTitle());
+		// }
+
+		// bookDAO.deleteById(2);
+		// List<Book> books = bookDAO.findAll();
+		// for(Book o: books){
+		// 	System.out.println(o.getTitle());
+		// }
+
 		
->>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
+		System.out.print("1");
+	}
+
+	@Test
+	void testBorrowlist(){
+		// List<Borrowlist> borrowlists = borrowlistDAO.findByUserAndBook(1, 1);
+		// for(Borrowlist borrowlist:borrowlists){
+		// 	borrowlistDAO.delete(borrowlist);
+		// }
+		
+		Borrowlist borrowlist = new Borrowlist();
+		borrowlist.setBook(1);
+		borrowlist.setUser(1);
+		borrowlist.setDate("2020.11.16");
+		borrowlist.setHavereturn(false);
+		borrowlistService.add(borrowlist);
+		// List<Borrowlist> booklists = borrowlistDAO.findAll();
+		// if(booklists.size() == 0){
+		// 	System.out.println("没有对象！");
+		// }
+		// for(Borrowlist booklist:booklists){
+		// 	Book book = bookDAO.findById(booklist.getBook());
+		// 	System.out.println(book.getTitle());
+		// }
 		System.out.print("1");
 	}
 

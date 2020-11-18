@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS `borrowlist`;
 DROP TABLE IF EXISTS `book`;
 DROP TABLE IF EXISTS `category`;
 DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `rolePermission`;
+DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `permission`;
 
 -- ----------------------------
 -- Table structure for user
@@ -80,7 +83,7 @@ CREATE TABLE `borrowlist` (
   `u_id` int(11) unsigned NOT NULL,
   `date` varchar(255) NOT NULL,
   `havereturn` boolean DEFAULT FALSE,
-  PRIMARY KEY (`b_id`),
+  PRIMARY KEY (`b_id`, `u_id`, `date`),
   Key `borrowed_book_on_id`(`b_id`),
   KEY `borrowed_user_on_id`(`u_id`),
   CONSTRAINT `borrowed_book_on_id` FOREIGN KEY (`b_id`) REFERENCES `book`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -91,6 +94,13 @@ CREATE TABLE `borrowlist` (
 -- Records of borrowlist
 -- ----------------------------
 INSERT INTO `borrowlist` VALUES ('1', '1', '2020.11.15', '0');
+INSERT INTO `borrowlist` VALUES ('1', '3', '2020.11.15', '1');
+INSERT INTO `borrowlist` VALUES ('1', '2', '2020.11.16', '0');
+INSERT INTO `borrowlist` VALUES ('2', '1', '2020.11.17', '1');
+INSERT INTO `borrowlist` VALUES ('2', '2', '2020.11.16', '1');
+INSERT INTO `borrowlist` VALUES ('3', '1', '2020.11.18', '1');
+INSERT INTO `borrowlist` VALUES ('2', '3', '2020.11.19', '0');
+INSERT INTO `borrowlist` VALUES ('3', '2', '2020.11.13', '0');
 
 -- ----------------------------
 -- Table structure for permission
@@ -98,14 +108,13 @@ INSERT INTO `borrowlist` VALUES ('1', '1', '2020.11.15', '0');
 CREATE TABLE `permission` (
   `permissionID` int(11) unsigned NOT NULL,
   `actualPermissionID` varchar(255) DEFAULT NULL,
-  `roleName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`permissionID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of permission
 -- ----------------------------
-INSERT INTO `permission` VALUES ('1', './sample','管理员');
+INSERT INTO `permission` VALUES ('1', './sample');
 
 
 
@@ -115,6 +124,7 @@ INSERT INTO `permission` VALUES ('1', './sample','管理员');
 CREATE TABLE `role` (
   `roleID` int(11) unsigned NOT NULL,
   `permissionID` int(11) unsigned NOT NULL,
+  `roleName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`roleID`),
   CONSTRAINT `permission_ID` FOREIGN KEY (`permissionID`) REFERENCES `permission`(`permissionID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -122,7 +132,7 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', '1');
+INSERT INTO `role` VALUES ('1', '1','管理员');
 
 
 -- ----------------------------

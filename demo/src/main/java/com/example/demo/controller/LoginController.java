@@ -25,9 +25,9 @@ public class LoginController {
 
         User user = userService.get(username, requestUser.getPassword());
         if (null == user) {
-            return new Result(400);
+            return new Result(400, "1", null);
         } else {
-            return new Result(200);
+            return new Result(200, "1", null);
         }
     }
 }

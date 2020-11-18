@@ -1,9 +1,5 @@
 package com.example.demo.service;
 
-<<<<<<< HEAD
-public class CategoryService {
-    
-=======
 import com.example.demo.dao.CategoryDAO;
 import com.example.demo.pojo.Category;
 
@@ -44,5 +40,4 @@ public class CategoryService {
     public void update(Category category){
         categoryDAO.save(category);
     }
->>>>>>> 21dc76c6b5ef736c5d81720af27d3500a3e73f24
 }
