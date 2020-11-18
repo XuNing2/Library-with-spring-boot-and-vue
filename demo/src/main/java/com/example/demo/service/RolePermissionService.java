@@ -15,7 +15,7 @@ public class RolePermissionService {
     }
 
     private RolePermission getByRoleIDAndPermission(int roleID,int permission){
-        return rolePermissionDAO.findByRoleIDAndPermission(roleID, permission);
+        return rolePermissionDAO.findByRoleIDAndPermissionID(roleID, permission);
     }
 
     public void add(RolePermission rolePermission){
@@ -26,7 +26,7 @@ public class RolePermissionService {
     }
 
     public void deleteByRoleIDAndPermission(int roleID,int permission){
-        rolePermissionDAO.deleteByRoleIDAndPermission(roleID, permission);
+        rolePermissionDAO.deleteByRoleIDAndPermissionID(roleID, permission);
     }
 
     public void update(RolePermission rolePermission){

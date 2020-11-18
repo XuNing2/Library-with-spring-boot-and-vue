@@ -15,7 +15,7 @@ public class RolePermission {
 
     @Id
     @Column(name = "permissionID")
-    private int permission; 
+    private int permissionID; 
 
 
     public int getRoleID() {
@@ -27,10 +27,10 @@ public class RolePermission {
     }
 
     public int getPermission() {
-        return permission;
+        return permissionID;
     }
 
     public void setPermissionID(int permission) {
-        this.permission = permission;
+        this.permissionID = permission;
     }
 }
