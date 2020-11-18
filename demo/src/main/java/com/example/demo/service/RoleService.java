@@ -35,6 +35,6 @@ public class RoleService {
     }
 
     public void deleteByRoleId(Role role) {
-        roleDAO.deleteByRoleId(role.getRoleID());
+        roleDAO.deleteByRoleID(role.getRoleID());
     }
 }
