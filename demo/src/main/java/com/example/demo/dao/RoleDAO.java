@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleDAO extends JpaRepository<Role, Integer>{   
     //通过roleID查询
-    Role findByRoleID(int roleID);
-    Role findByRoleName(String roleName);
+    Role findByRoleid(int roleID);
+    Role findByRolename(String roleName);
 
-    void deleteByRoleID(int roleId);
+    void deleteByRoleid(int roleId);
+
 }

@@ -4,7 +4,9 @@ import com.example.demo.dao.RoleDAO;
 import com.example.demo.pojo.Role;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RoleService {
     @Autowired
     RoleDAO roleDAO;
@@ -15,7 +17,7 @@ public class RoleService {
     }
 
     private Role getByRoleName(String roleName) {
-        return roleDAO.findByRoleName(roleName);
+        return roleDAO.findByRolename(roleName);
     }
 
     public boolean isExistByID(int roleId){
@@ -24,17 +26,17 @@ public class RoleService {
     }
 
     private Role getByRoleId(int roleId) {
-        return roleDAO.findByRoleID(roleId);
+        return roleDAO.findByRoleid(roleId);
     }
 
     public void add(Role role) {
-        if(!isExistByID(role.getRoleID()))
+        if(!isExistByID(role.getRoleid()))
             roleDAO.save(role);
         else
             System.out.print("该角色已存在！");
     }
 
     public void deleteByRoleId(Role role) {
-        roleDAO.deleteByRoleID(role.getRoleID());
+        roleDAO.deleteByRoleid(role.getRoleid());
     }
 }

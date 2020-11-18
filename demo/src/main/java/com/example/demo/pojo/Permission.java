@@ -10,26 +10,28 @@ import javax.persistence.*;
 public class Permission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "permissionID")
-    private int permissionID;
+    @Column(name = "permissionid")
+    private int permissionid;
 
-    @Column(name = "actualPermissionID")
-    private String actualPermissionID;
+    @Column(name = "actualpermissionid")
+    private String actualpermissionid;
 
-
-    public int getPermissionID() {
-        return permissionID;
+    public int getPermissionid() {
+        return permissionid;
     }
 
-    public void setPermissionID(int permissionID) {
-        this.permissionID = permissionID;
+    public void setPermissionid(int permissionid) {
+        this.permissionid = permissionid;
     }
 
-    public String getActualPermissionID() {
-        return actualPermissionID;
+    public String getActualpermissionid() {
+        return actualpermissionid;
     }
 
-    public void setActualPermissionID(String actualPermissionID) {
-        this.actualPermissionID = actualPermissionID;
+    public void setActualpermissionid(String actualpermissionid) {
+        this.actualpermissionid = actualpermissionid;
     }
+
+
+
 }

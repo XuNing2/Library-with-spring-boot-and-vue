@@ -9,8 +9,8 @@ public class RolePermissioPK implements Serializable{
      *
      */
     private static final long serialVersionUID = 1L;
-    private int roleID;
-    private int permissionID;
+    private int roleid;
+    private int permissionid;
 
     @Override
     public boolean equals(Object o){
@@ -19,35 +19,35 @@ public class RolePermissioPK implements Serializable{
 
         RolePermissioPK rolePermissioPK = (RolePermissioPK) o;
 
-        if(roleID != rolePermissioPK.getRoleID()) return false;
-        return permissionID != rolePermissioPK.getPermission();
+        if(roleid != rolePermissioPK.getRoleID()) return false;
+        return permissionid != rolePermissioPK.getPermission();
     }
 
     @Override
     public int hashCode(){
-        int result = roleID;
-        result = result*31+permissionID;
+        int result = roleid;
+        result = result*31+permissionid;
         return result;
     }
 
     private int getPermission() {
-        return permissionID;
+        return permissionid;
     }
 
     private int getRoleID() {
-        return roleID;
+        return roleid;
     }
 
  
 
     public void setRoleID(int roleID) {
-        this.roleID = roleID;
+        this.roleid = roleID;
     }
 
 
 
     public void setPermissionID(int permission) {
-        this.permissionID = permission;
+        this.permissionid = permission;
     }
 
 }

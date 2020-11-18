@@ -106,11 +106,11 @@ INSERT INTO `borrowlist` VALUES ('3', '2', '2020.11.13', '0');
 -- Table structure for permission
 -- ----------------------------
 CREATE TABLE `permission` (
-  `permissionID` int(11) unsigned NOT NULL,
-  `actualPermissionID` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`permissionID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
+  `permissionid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `actualPermissionid` varchar(255) DEFAULT NULL,
+  
+  PRIMARY KEY (`permissionid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Records of permission
 -- ----------------------------
@@ -122,29 +122,27 @@ INSERT INTO `permission` VALUES ('1', './sample');
 -- Table structure for role
 -- ----------------------------
 CREATE TABLE `role` (
-  `roleID` int(11) unsigned NOT NULL,
-  `permissionID` int(11) unsigned NOT NULL,
-  `roleName` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`roleID`),
-  CONSTRAINT `permission_ID` FOREIGN KEY (`permissionID`) REFERENCES `permission`(`permissionID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `roleID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`roleName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`roleID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('1', '1','管理员');
+INSERT INTO `role` VALUES ('1','管理员');
 
 
 -- ----------------------------
 -- Table structure for rolePermission
 -- ----------------------------
 CREATE TABLE `rolePermission` (
-  `permissionID` int(11) unsigned NOT NULL,
-  `roleID` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`roleID`,`permissionID`),
-  CONSTRAINT `role_ID` FOREIGN KEY (`roleID`) REFERENCES `role`(`roleID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `permission_ID1` FOREIGN KEY (`permissionID`) REFERENCES `permission`(`permissionID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `permissionid` int(11) unsigned NOT NULL,
+  `roleid` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`roleid`,`permissionid`),
+  CONSTRAINT `role_id` FOREIGN KEY (`roleid`) REFERENCES `role`(`roleid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `permission_ID1` FOREIGN KEY (`permissionid`) REFERENCES `permission`(`permissionid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of rolePermission

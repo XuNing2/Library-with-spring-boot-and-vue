@@ -10,27 +10,29 @@ import javax.persistence.*;
 @IdClass(RolePermissioPK.class)
 public class RolePermission {
     @Id
-    @Column(name = "roleID")
-    private int roleID; 
+    @Column(name = "roleid")
+    private int roleid; 
 
     @Id
-    @Column(name = "permissionID")
-    private int permissionID; 
+    @Column(name = "permissionid")
+    private int permissionid;
 
-
-    public int getRoleID() {
-        return roleID;
+    public int getRoleid() {
+        return roleid;
     }
 
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
     }
 
-    public int getPermission() {
-        return permissionID;
+    public int getPermissionid() {
+        return permissionid;
     }
 
-    public void setPermissionID(int permission) {
-        this.permissionID = permission;
+    public void setPermissionid(int permissionid) {
+        this.permissionid = permissionid;
     }
+
+
+
 }

@@ -4,7 +4,9 @@ import com.example.demo.dao.RolePermissionDAO;
 import com.example.demo.pojo.RolePermission;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RolePermissionService {
     @Autowired
     RolePermissionDAO rolePermissionDAO;
@@ -15,18 +17,18 @@ public class RolePermissionService {
     }
 
     private RolePermission getByRoleIDAndPermission(int roleID,int permission){
-        return rolePermissionDAO.findByRoleIDAndPermissionID(roleID, permission);
+        return rolePermissionDAO.findByRoleidAndPermissionid(roleID, permission);
     }
 
     public void add(RolePermission rolePermission){
-        if(!isExistByRoleIDAndPermission(rolePermission.getRoleID(), rolePermission.getPermission()))
+        if(!isExistByRoleIDAndPermission(rolePermission.getRoleid(), rolePermission.getPermissionid()))
             rolePermissionDAO.save(rolePermission);
         else
             System.out.print("该角色权限已存在！");
     }
 
     public void deleteByRoleIDAndPermission(int roleID,int permission){
-        rolePermissionDAO.deleteByRoleIDAndPermissionID(roleID, permission);
+        rolePermissionDAO.deleteByRoleidAndPermissionid(roleID, permission);
     }
 
     public void update(RolePermission rolePermission){

@@ -5,15 +5,24 @@ import java.util.List;
 import com.example.demo.dao.BookDAO;
 import com.example.demo.dao.BorrowlistDAO;
 import com.example.demo.dao.CategoryDAO;
+import com.example.demo.dao.PermissionDAO;
+import com.example.demo.dao.RoleDAO;
+import com.example.demo.dao.RolePermissionDAO;
 import com.example.demo.dao.UserDAO;
 import com.example.demo.pojo.Book;
 import com.example.demo.pojo.Borrowlist;
 import com.example.demo.pojo.Category;
+import com.example.demo.pojo.Permission;
+import com.example.demo.pojo.Role;
+import com.example.demo.pojo.RolePermission;
 import com.example.demo.pojo.User;
 
 import com.example.demo.service.BookService;
 import com.example.demo.service.BorrowlistService;
 import com.example.demo.service.CategoryService;
+import com.example.demo.service.PermissionService;
+import com.example.demo.service.RolePermissionService;
+import com.example.demo.service.RoleService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,18 +52,20 @@ class DemoApplicationTests {
 	@Autowired
 	BorrowlistService borrowlistService;
 
+
+
 	@Test
 	void testBook() {
 
-		// Book book = new Book();
-		// book.setAuthor("lzh");
-		// book.setId(2);
-		// book.setTitle("lzhnb");
-		// book.setPress("press");
+		Book book = new Book();
+		book.setAuthor("lzh");
+		book.setId(2);
+		book.setTitle("lzhnb");
+		book.setPress("press");
 
-		// Category category = categoryDAO.findById(1);
-		// book.setCategory(category);
-		// bookDAO.save(book);
+		Category category = categoryDAO.findById(1);
+		book.setCategory(category);
+		bookDAO.save(book);
 
 		// List<Book> book = bookDAO.findAllByPressLike("%华%");
 		// if(book.size() == 0){
@@ -116,6 +127,52 @@ class DemoApplicationTests {
 		// 	System.out.println(book.getTitle());
 		// }
 		System.out.print("1");
+	}
+
+	@Autowired
+	RoleDAO roleDAO;
+
+	@Autowired
+	RoleService ros;
+
+	@Test 
+	void testRole(){
+		Role role = new Role();
+		role.setRoleid(2);
+		role.setRolename("jj");
+		ros.add(role);
+	}
+
+
+	@Autowired
+	PermissionDAO perimissionDAO;
+
+	@Autowired
+	PermissionService permissionService;
+
+	@Test
+	void testPermission(){
+		Permission permission = new Permission();
+		permission.setPermissionid(2);
+		permission.setActualpermissionid("./hhhh");
+		permissionService.add(permission);
+	}
+
+	@Autowired
+	RolePermissionDAO rpDAO;
+
+	@Autowired
+	RolePermissionService rolepermissionService;
+
+	@Test
+	void testRolePermission(){
+		RolePermission rolePermission = new RolePermission();
+		rolePermission.setRoleid(1);
+		rolePermission.setPermissionid(2);
+		rolepermissionService.add(rolePermission);
+
+
+
 	}
 
 }

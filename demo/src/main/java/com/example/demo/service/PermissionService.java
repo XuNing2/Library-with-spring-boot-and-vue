@@ -4,30 +4,33 @@ import com.example.demo.dao.PermissionDAO;
 import com.example.demo.pojo.Permission;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class PermissionService {
     @Autowired
     PermissionDAO permissionDAO;
 
     public boolean isExist(int permissionID) {
-        Permission permission = getByPermissionId(permissionID);
+        Permission permission = getByPermissionID(permissionID);
         return null!=permission;
     }
 
-    private Permission getByPermissionId(int permissionID) {
-        return permissionDAO.findByPermissionID(permissionID);
+    private Permission getByPermissionID(int permissionID) {
+        return permissionDAO.findByPermissionid(permissionID);
     }
     
 
     public void add(Permission permission) {
-        if(!isExist(permission.getPermissionID()))
+        if(!isExist(permission.getPermissionid()))
             permissionDAO.save(permission);
         else
             System.out.print("该权限已存在！");
     }
 
     public void deleteByPermissionID(Permission permission) {
-            permissionDAO.deleteByPermissionID(permission.getPermissionID());
+            permissionDAO.deleteByPermissionid(permission.getPermissionid());
 
     }
 

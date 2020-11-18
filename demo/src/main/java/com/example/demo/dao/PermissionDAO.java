@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PermissionDAO extends JpaRepository<Permission, Integer>{   
     //通过PermissionID查询
-    Permission findByPermissionID(int PermissionID);
+    Permission findByPermissionid(int PermissionID);
 
-	void deleteByPermissionID(int permissionID);
+	void deleteByPermissionid(int permissionID);
 
 }

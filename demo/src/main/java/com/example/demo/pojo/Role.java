@@ -10,37 +10,32 @@ import javax.persistence.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roleID")
-    private int roleID; 
+    @Column(name = "roleid")
+    private int roleid; 
 
 
-    @Column(name = "permissionID")
-    private int permission; 
 
-    @Column(name = "roleName")
-    private String roleName;
 
-    public int getRoleID() {
-        return roleID;
+    @Column(name = "rolename")
+    private String rolename;
+
+    public int getRoleid() {
+        return roleid;
     }
 
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
     }
 
-    public int getPermissionID() {
-        return permission;
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setPermissionID(int permission) {
-        this.permission = permission;
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
     }
 
-    public String getRoleName() {
-        return roleName;
-    }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
+
+
 }
