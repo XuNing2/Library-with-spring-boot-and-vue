@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "rolepermission")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@IdClass(RolePermissioPK.class)
 public class RolePermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +17,7 @@ public class RolePermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "permissionID")
-    private Permission permission; 
+    private int permission; 
 
 
     public int getRoleID() {
@@ -27,11 +28,11 @@ public class RolePermission {
         this.roleID = roleID;
     }
 
-    public Permission getPermission() {
+    public int getPermission() {
         return permission;
     }
 
-    public void setPermissionID(Permission permission) {
+    public void setPermissionID(int permission) {
         this.permission = permission;
     }
 }
