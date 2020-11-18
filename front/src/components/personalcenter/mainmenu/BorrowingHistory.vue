@@ -5,18 +5,18 @@
     border
     style="width: 100%">
       <el-table-column
-        prop="book"
-        label="书籍"
+        prop="ISBN"
+        label="ISBN"
         >
       </el-table-column>
       <el-table-column
-        prop="borrowingtime"
-        label="借阅日期"
+        prop="bookname"
+        label="书名"
         >
       </el-table-column>
       <el-table-column
-        prop="returntime"
-        label="归还日期"
+        prop="author"
+        label="作者"
         >
       </el-table-column>
     </el-table>
@@ -32,9 +32,9 @@
       return {
         username: '',
         tableData: [{
-          book: '',
-          borrowingtime: '',
-          returntime: ''
+          ISBN: '',
+          bookname: '',
+          author: ''
         }]
       }
     },
@@ -70,9 +70,9 @@
           .catch(failResponse => {
           })
         this.tableData = [{
-          book: '全国富婆通讯录',
-          borrowingtime: '2020-11-14',
-          returntime: '2020-11-15'
+          ISBN: '978-7-107-18618-5',
+          bookname: '全国富婆通讯录',
+          author: '李长春'
         }];
       }
     }
