@@ -10,12 +10,10 @@ import javax.persistence.*;
 @IdClass(RolePermissioPK.class)
 public class RolePermission {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roleID")
     private int roleID; 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "permissionID")
     private int permission; 
 
