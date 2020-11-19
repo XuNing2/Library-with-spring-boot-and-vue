@@ -8,7 +8,6 @@
         <p slot="content" style="font-size: 14px;margin-bottom: 6px;">{{item.title}}</p>
         <p slot="content" style="font-size: 13px;margin-bottom: 6px">
           <span>{{item.author}}</span> /
-          <span>{{item.date}}</span> /
           <span>{{item.press}}</span>
         </p>
         <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
@@ -49,7 +48,6 @@
             cover: 'https://img3.doubanio.com/view/subject/l/public/s1228930.jpg',
             title: '挪威的森林',
             author: '村上春树',
-            date: '2019-05-05',
             press: '上海译文出版社',
             abs: '故事讲述主角纠缠在情绪不稳定且患有精神疾病的直子和开朗活泼的小林绿子之间，展开了自我成长的旅程。自该书在日本问世，截止2012年在日本共销出1500余万册。'
           }
