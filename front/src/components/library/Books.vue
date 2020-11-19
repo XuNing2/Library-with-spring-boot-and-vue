@@ -25,7 +25,6 @@
           <div class="author">{{item.author}}</div>
         </el-card>
       </el-tooltip>
-      <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
     </el-row>
     <el-row>
       <el-pagination
@@ -56,7 +55,7 @@
           }
         ],
         currentPage: 1,
-        pagesize: 17
+        pagesize: 10,
       }
     },
     mounted: function () {

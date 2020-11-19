@@ -7,6 +7,7 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
 import Register from '../components/Register.vue'
+import LibraryIndex from '../components/library/LibraryIndex'
 Vue.use(VueRouter)
 //pus
 // const routes = [
@@ -61,6 +62,14 @@ export default new VueRouter({
           path: '/index',
           name: 'AppIndex',
           component: AppIndex,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/library',
+          name: 'Library',
+          component: LibraryIndex,
           meta: {
             requireAuth: true
           }
