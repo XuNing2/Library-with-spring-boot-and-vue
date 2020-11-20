@@ -1,8 +1,10 @@
  <template>
+ 
     <el-table
       :data="tableData"
-      style="width: 340"
+      style="width: 65%"
       max-height="400"
+     
       >
       <el-table-column
         prop="information"
@@ -18,7 +20,13 @@
       </el-table-column>
      
     </el-table>
+ 
   </template>
+
+<style scoped>
+
+</style>
+
 
   <script>
     export default {

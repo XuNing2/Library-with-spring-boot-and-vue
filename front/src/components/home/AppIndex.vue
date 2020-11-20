@@ -1,57 +1,60 @@
 <template>
   <div>
     <el-container>
-  <el-header> 
+  <el-header height="170px"> 
     <br>  
-  <p>
+ 
 
 <img src="https://s3.ax1x.com/2020/11/16/Dkq0tU.png" alt="" width="667" height="109">
-</p>
-    <br>  
-    
-    <sousuokuang @onSearch="searchResult" ref="searchBar"></sousuokuang>
-    </el-header>
-  <el-main>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <huadongchuang></huadongchuang>
 
- </el-main>
+    <br>  
+    </el-header>
+     <el-container  style="background:#EBEEF5">
+    <el-aside></el-aside>
+  <el-main >
+
+    <br>
+    <huadongchuang ></huadongchuang>
+  
+  </el-main>
+     <el-aside></el-aside>
+     </el-container>
+     <br>
+<br>
+<br>
  <el-container>
-   <el-main>
+    <el-aside></el-aside>
+   <el-container>
+
+   <el-header>
+     <img src="https://s3.ax1x.com/2020/11/19/DKknC6.png" alt="" ></el-header>
+     
+  <br>
+   <el-main class="setbg">
 <br>
-<br>
-<img src="https://s3.ax1x.com/2020/11/19/DKknC6.png" alt="" >
 <br>
 <br>
 <br>
 <Books class="books-area" ref="booksArea"></Books>
-
    </el-main>
-   <el-aside>
+ 
+    
+   </el-container>
+
+   <el-aside width="450px" style="float: right" >
     <br>
     <br>
     <br>
-    <xiaoxitongzhi></xiaoxitongzhi></el-aside>
+    
+    <xiaoxitongzhi ></xiaoxitongzhi>
+    
+    </el-aside>
  </el-container>
     <el-container>
       <el-main>
           <br>
 
-    <p> 我们组的项目为网上图书馆系统，该系统的宗旨是实现图书管理的系统化、规范化和自动化，达成图书资料集中、统一管理的目标。</p>
-<br>
+  我们组的项目为网上图书馆系统，该系统的宗旨是实现图书管理的系统化、规范化和自动化，达成图书资料集中、统一管理的目标。<br>
 该系统实现了四大功能模块：
 <br>1.日常工作模块：借书管理、还书管理、登录功能
 <br>2.查询模块：图书资料查询、读者资料查询、借阅历史查询
@@ -65,14 +68,13 @@
 
 <script>
 import Books from './Homecommon/Books2.vue'
-import Sousuokuang from './Homecommon/sousuokuang.vue'
 import huadongchuang from'./Homecommon/huadongchuang.vue'
 import Xiaoxitongzhi from './Homecommon/xiaoxitongzhi.vue'
 
   export default {
     name: 'Home',
 
-    components: {Sousuokuang,huadongchuang, Xiaoxitongzhi,Books},
+    components: {huadongchuang, Xiaoxitongzhi,Books},
     
      method:{
      searchResult () {
@@ -91,9 +93,13 @@ import Xiaoxitongzhi from './Homecommon/xiaoxitongzhi.vue'
 </script>
 
 <style scoped>
+.setbg{
+  background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605866129084&di=4951638f6d4081208adb48117cb6b6bf&imgtype=0&src=http%3A%2F%2Fwww.51yuansu.com%2Fpic2%2Fcover%2F00%2F16%2F42%2F579b47c7588c4_610.jpg);
+}
 .books-area {
     width: 990px;
     margin-left: auto;
     margin-right: auto;
   }
+
 </style>
