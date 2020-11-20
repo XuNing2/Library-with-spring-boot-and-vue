@@ -115,6 +115,8 @@ CREATE TABLE `book` (
   `press` varchar(255) DEFAULT NULL,
   `cate_id` int(11) UNSIGNED DEFAULT NULL,
   `date` varchar(255) DEFAULT NULL,
+  `cover` varchar(255) DEFAULT NULL,
+  `outline` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `book_type_on_id`(`cate_id`),
   CONSTRAINT `book_type_on_id` FOREIGN KEY (`cate_id`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -123,12 +125,12 @@ CREATE TABLE `book` (
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES ('1', 'lzh', '帅的定义', '华南理工大学出版社', '4', '2020-11-20 12:00:00');
-INSERT INTO `book` VALUES ('2', 'lzh', 'cxk教你打篮球', '华南理工大学出版社', '1', '2020-11-20 12:00:00');
-INSERT INTO `book` VALUES ('3', '奥尼尔', '如何增重', 'NBA', '2', '2020-11-20 12:00:00');
-INSERT INTO `book` VALUES ('4', 'c罗', '踢球的艺术', 'football', '3', '2020-11-20 12:00:00');
-INSERT INTO `book` VALUES ('5', 'lj', '如何泡妞', '青春文学', '5', '2020-11-20 12:00:00');
-INSERT INTO `book` VALUES ('6', 'haha', '冲冲冲', '全村的希望', '6', '2020-11-20 12:00:00');
+INSERT INTO `book` VALUES ('1', 'lzh', '帅的定义', '华南理工大学出版社', '4', '2020-11-20 12:00:00','' ,'');
+INSERT INTO `book` VALUES ('2', 'lzh', 'cxk教你打篮球', '华南理工大学出版社', '1', '2020-11-20 12:00:00','' ,'');
+INSERT INTO `book` VALUES ('3', '奥尼尔', '如何增重', 'NBA', '2', '2020-11-20 12:00:00','' ,'');
+INSERT INTO `book` VALUES ('4', 'c罗', '踢球的艺术', 'football', '3', '2020-11-20 12:00:00','' ,'');
+INSERT INTO `book` VALUES ('5', 'lj', '如何泡妞', '青春文学', '5', '2020-11-20 12:00:00','' ,'');
+INSERT INTO `book` VALUES ('6', 'haha', '冲冲冲', '全村的希望', '6', '2020-11-20 12:00:00','' ,'');
 
 -- ----------------------------
 -- Table structure for borrowlist

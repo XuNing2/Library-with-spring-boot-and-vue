@@ -17,6 +17,10 @@ public class RolePermission {
     @Column(name = "permissionid")
     private int permissionid;
 
+    public RolePermission(){
+        
+    }
+
     public RolePermission(int roleid, int permissionid){
         this.roleid = roleid;
         this.permissionid = permissionid;

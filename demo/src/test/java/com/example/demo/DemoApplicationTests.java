@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import com.example.demo.controller.LibraryController;
 import com.example.demo.dao.BookDAO;
 import com.example.demo.dao.BorrowlistDAO;
 import com.example.demo.dao.CategoryDAO;
@@ -54,6 +55,9 @@ class DemoApplicationTests {
 	@Autowired
 	BorrowlistService borrowlistService;
 
+	@Autowired
+	LibraryController libraryController;
+
 
 
 	@Test
@@ -61,10 +65,10 @@ class DemoApplicationTests {
 
 		Category category = categoryService.getById(2);
 		Book book = new Book("lzhnb", "lzh", "press", category);
-
+		book.setId(14);
 		Category category1 = categoryDAO.findById(1);
 		book.setCategory(category1);
-		bookDAO.save(book);
+		libraryController.updateBook(book);
 
 		// List<Book> book = bookDAO.findAllByPressLike("%华%");
 		// if(book.size() == 0){

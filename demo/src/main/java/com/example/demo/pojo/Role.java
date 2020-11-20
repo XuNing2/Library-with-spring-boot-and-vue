@@ -16,6 +16,10 @@ public class Role {
     @Column(name = "rolename")
     private String rolename;
 
+    public Role(){
+        
+    }
+
     public Role(int id, String rolename){
         this.roleid = id;
         this.rolename = rolename;

@@ -35,8 +35,12 @@ public class BookService {
         return bookDAO.findAllByPressLike("%" + press + "%");
     }
 
-    public List<Book> listByTitleOrAuthor(String keywords){
-        return bookDAO.findAllByTitleLikeOrAuthorLike("%" + keywords + "%", "%" + keywords + "%");
+    public List<Book> listByTitle(String title){
+        return bookDAO.findAllByTitleLike("%" + title + "%");
+    }
+
+    public List<Book> listByAuthor(String author){
+        return bookDAO.findAllByAuthorLike("%" + author + "%");
     }
 
     public Book getById(int id){
