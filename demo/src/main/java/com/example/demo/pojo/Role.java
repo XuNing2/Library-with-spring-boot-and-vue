@@ -13,11 +13,13 @@ public class Role {
     @Column(name = "roleid")
     private int roleid; 
 
-
-
-
     @Column(name = "rolename")
     private String rolename;
+
+    public Role(int id, String rolename){
+        this.roleid = id;
+        this.rolename = rolename;
+    }
 
     public int getRoleid() {
         return roleid;

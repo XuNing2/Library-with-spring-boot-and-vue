@@ -46,8 +46,9 @@ public class BorrowlistService {
         return borrowlists == null;
     }
 
-    public void add(Borrowlist borrowlist){
-        if(canBorrow(borrowlist.getBook())){
+    public void add(int uid, int bid){
+        if(canBorrow(bid)){
+            Borrowlist borrowlist = new Borrowlist();
             borrowlistDAO.save(borrowlist);
         }
         else{

@@ -16,6 +16,11 @@ public class Permission {
     @Column(name = "actualpermissionid")
     private String actualpermissionid;
 
+    public Permission(int permissionid, String path){
+        this.permissionid = permissionid;
+        this.actualpermissionid = path;
+    }
+
     public int getPermissionid() {
         return permissionid;
     }
