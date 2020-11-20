@@ -18,6 +18,13 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "telephone")
+    private String telephone;
+
+    @OneToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     public int getId() {
         return id;
     }
@@ -40,6 +47,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
 
