@@ -74,8 +74,10 @@
       },
       searchResult () {
         var _this = this
+        var value = this.$refs.searchBar.value
+        //1 书名 2 出版社 3 作者
         this.$axios
-          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
+          .get('/search/'+value+'?keywords=' + this.$refs.searchBar.keywords, {
           }).then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
