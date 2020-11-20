@@ -28,6 +28,10 @@ public class UserService {
         return userDAO.findByUsername(username);
     }
 
+    public User getByUserid(int userid){
+        return userDAO.findById(userid);
+    }
+
     public User get(String username, String password){
         return userDAO.getByUsernameAndPassword(username, password);
     }

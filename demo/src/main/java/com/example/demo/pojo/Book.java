@@ -24,6 +24,22 @@ public class Book {
     @Column(name = "press")
     private String press;
 
+    @Column(name = "date")
+    private String date;
+
+    public Book(String title, String author, String press, Category category)
+    {
+        this.title = title;
+        this.author = author;
+        this.press = press;
+        this.category = category;
+    }
+
+    public void print(){
+        System.out.print("bookid:"+ this.id+"\ntitle:"+this.title
+        +"\ncate_id:"+this.category.getId()+"\ntypename:"+this.category.getName()
+        +"\nadd_date:"+this.date+"\n");
+    }
 
     public int getId() {
         return id;
@@ -63,6 +79,14 @@ public class Book {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
     
 }

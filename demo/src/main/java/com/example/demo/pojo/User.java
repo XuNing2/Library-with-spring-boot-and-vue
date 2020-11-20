@@ -25,6 +25,12 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public User(String name, String password, String telephone){
+        this.username = name;
+        this.password = password;
+        this.telephone = telephone;
+    }
+
     public int getId() {
         return id;
     }

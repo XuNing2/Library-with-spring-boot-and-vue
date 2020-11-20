@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.example.demo.dao.BorrowlistDAO;
@@ -46,13 +48,12 @@ public class BorrowlistService {
         return borrowlists == null;
     }
 
-    public void add(Borrowlist borrowlist){
-        if(canBorrow(borrowlist.getBook())){
-            borrowlistDAO.save(borrowlist);
-        }
-        else{
-            System.out.println("该书已经被借阅了！");
-        }
+    public void add(int uid, int bid){
+        Borrowlist borrowlist = new Borrowlist(uid, bid, false);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        borrowlist.setDate(df.format(new Date()));
+        borrowlistDAO.save(borrowlist);
+
     }
 
     public void update(Borrowlist borrowlist){
