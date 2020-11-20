@@ -1,7 +1,6 @@
 <template>
   <div>
-    <el-row style="height: 840px;">
-      <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
+    <el-row style="height:320px;">
       <el-tooltip effect="dark" placement="right"
                   v-for="item in books"
                   :key="item.id">
@@ -25,26 +24,19 @@
         </el-card>
       </el-tooltip>
     </el-row>
-    <el-row>
-      <el-pagination
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-size="pagesize"
-        :total="books.length">
-      </el-pagination>
-    </el-row>
+  
   </div>
 </template>
 
 <script>
-  import SearchBar from './SearchBar'
+ 
   export default {
     name: 'Books',
-    components: {SearchBar},
+    components: {},
     data () {
       return {
         books: [
-          {
+            {
             cover: 'https://img3.doubanio.com/view/subject/l/public/s1228930.jpg',
             title: '挪威的森林',
             author: '村上春树',
@@ -52,8 +44,6 @@
             abs: '故事讲述主角纠缠在情绪不稳定且患有精神疾病的直子和开朗活泼的小林绿子之间，展开了自我成长的旅程。自该书在日本问世，截止2012年在日本共销出1500余万册。'
           }
         ],
-        currentPage: 1,
-        pagesize: 10,
       }
     },
     mounted: function () {
@@ -71,17 +61,7 @@
       handleCurrentChange: function (currentPage) {
         this.currentPage = currentPage
         console.log(this.currentPage)
-      },
-      searchResult () {
-        var _this = this
-        this.$axios
-          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
-          }).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
-          }
-        })
-      }   
+      }
     }
   }
 </script>

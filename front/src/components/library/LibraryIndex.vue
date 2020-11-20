@@ -5,7 +5,7 @@
       <SideMenu @indexSelect="listByCategory" ref="sideMenu"></SideMenu>
     </el-aside>
     <el-main>
-      <books class="books-area" ref="booksArea"></books>
+      <Books class="books-area" ref="booksArea"></Books>
     </el-main>
   </el-container>
 </template>
@@ -21,6 +21,7 @@
       listByCategory () {
         var _this = this
         var cid = this.$refs.sideMenu.cid
+        //0全部 1文学 2流行 3文化 4生活 5经营 6科技
         var url = 'categories/' + cid + '/books'
         this.$axios.get(url).then(resp => {
           if (resp && resp.status === 200) {
