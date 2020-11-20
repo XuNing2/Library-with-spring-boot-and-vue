@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-table
-    :data="tableData"
+    :data="collectBook"
     border
     style="width: 100%">
       <el-table-column
@@ -21,7 +21,7 @@
       </el-table-column>
     </el-table>
     <el-footer>
-      <el-button round @click="refresh()" class="button">刷新</el-button>
+      <el-button round @click="refresh_2()" class="button">刷新</el-button>
     </el-footer>
   </el-container>
 </template>
@@ -31,7 +31,7 @@
     data() {
       return {
         username: '',
-        tableData: [{
+        collectBook: [{
           ISBN: '',
           bookname: '',
           author: ''
@@ -45,34 +45,34 @@
       init() {
         this.username = localStorage.getItem('username');
         this.$axios
-          .get('/personalcenter_state=bh', {
+          .get('/personalcenter_state=cb', {
             username: this.username,
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              this.tableData = successResponse.data;
+              this.collectBook = successResponse.data;
             }
           })
           .catch(failResponse => {
           })
       },
-      refresh() {
+      refresh_2() {
         this.username = localStorage.getItem('username');
         this.$axios
-          .get('/personalcenter_state=bh', {
+          .get('/personalcenter_state=cb', {
             username: this.username,
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              this.tableData = successResponse.data;
+              this.collectBook = successResponse.data;
             }
           })
           .catch(failResponse => {
           })
-        this.tableData = [{
+        this.collectBook = [{
           ISBN: '978-7-107-18618-5',
           bookname: '全国富婆通讯录',
-          author: '李长春'
+          author: '李长'
         }];
       }
     }

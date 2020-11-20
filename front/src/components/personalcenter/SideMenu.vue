@@ -22,6 +22,8 @@
         </el-tab-pane>
         <el-tab-pane label="借阅历史" name="bh">
         </el-tab-pane>
+        <el-tab-pane label="收藏图书" name="cb">
+        </el-tab-pane>
       </el-tabs>
     </el-aside>
     <el-main>
@@ -31,6 +33,9 @@
       <div v-if="b">
         <borrowing-history></borrowing-history>
       </div>
+      <div v-if="c">
+        <collect-book></collect-book>
+      </div>
     </el-main>
   </el-container>
 </template>
@@ -38,13 +43,15 @@
 <script>
  import BorrowingHistory from './mainmenu/BorrowingHistory'
  import PersonalInformation from './mainmenu/PersonalInformation'
+ import CollectBook from './mainmenu/CollectBook'
   export default {
     name: 'SideMenu',
-    components: {BorrowingHistory, PersonalInformation},
+    components: {BorrowingHistory, PersonalInformation, CollectBook},
     data () {
       return {
         a: true,
         b: false,
+        c: false,
         activeName: 'pi'
       }
     },
@@ -56,14 +63,24 @@
         }else if(tab.name == 'bh'){
         	// 触发‘用户管理’事件
         	this.bh();
+        }else if(tab.name == 'cb'){
+        	// 触发‘收藏图书’事件
+        	this.cb();
         }
       },
       pi(){
         this.a = true;
         this.b = false;
+        this.c = false;
       },
       bh(){
         this.b = true;
+        this.a = false;
+        this.c = false;
+      },
+      cb(){
+        this.c = true;
+        this.b = false;
         this.a = false;
       }
    }

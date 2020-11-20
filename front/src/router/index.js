@@ -8,6 +8,15 @@ import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
 import Register from '../components/Register.vue'
 import LibraryIndex from '../components/library/LibraryIndex'
+import Admin from '../components/admin/Admin'
+import queryUser from '../components/admin/UserManage/queryUser'
+import handleRequest from '../components/admin/UserManage/handleRequest'
+import deleteUser from '../components/admin/UserManage/deleteUser'
+import changeUser from '../components/admin/UserManage/changeUser'
+import addBook from '../components/admin/BookManage/addBook'
+import changeBook from '../components/admin/BookManage/changeBook'
+import deleteBook from '../components/admin/BookManage/deleteBook'
+import queryBook from '../components/admin/BookManage/queryBook'
 Vue.use(VueRouter)
 //pus
 // const routes = [
@@ -104,6 +113,54 @@ export default new VueRouter({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin,
+      children: [
+        {
+          name: "queryUser",
+          path: "queryUser",
+          component: queryUser
+        },
+        {
+          name: "handleRequest",
+          path: "handleRequest",
+          component: handleRequest
+        },
+        {
+          name: "deleteUser",
+          path: "deleteUser",
+          component: deleteUser
+        },
+        {
+          name: "changeUser",
+          path: "changeUser",
+          component: changeUser
+        },
+        {
+          name: "addBook",
+          path: "addBook",
+          component: addBook
+        },
+        {
+          name: "changeBook",
+          path: "changeBook",
+          component: changeBook
+        },
+        {
+          name: "deleteBook",
+          path: "deleteBook",
+          component: deleteBook
+        },
+        {
+          name: "queryBook",
+          path: "queryBook",
+          component: queryBook
+        },
+
+      ]
     }
     // {
     //   path: '/personalcenter',
