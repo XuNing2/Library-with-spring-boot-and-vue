@@ -22,7 +22,7 @@
         var _this = this
         var cid = this.$refs.sideMenu.cid
         //0全部 1文学 2流行 3文化 4生活 5经营 6科技
-        var url = 'categories/' + cid + '/books'
+        var url = 'library/categories/' + cid + '/books'
         this.$axios.get(url).then(resp => {
           if (resp && resp.status === 200) {
             _this.$refs.booksArea.books = resp.data
