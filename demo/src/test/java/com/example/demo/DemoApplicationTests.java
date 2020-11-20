@@ -59,14 +59,11 @@ class DemoApplicationTests {
 	@Test
 	void testBook() {
 
-		Book book = new Book();
-		book.setAuthor("lzh");
-		book.setId(2);
-		book.setTitle("lzhnb");
-		book.setPress("press");
+		Category category = categoryService.getById(2);
+		Book book = new Book("lzhnb", "lzh", "press", category);
 
-		Category category = categoryDAO.findById(1);
-		book.setCategory(category);
+		Category category1 = categoryDAO.findById(1);
+		book.setCategory(category1);
 		bookDAO.save(book);
 
 		// List<Book> book = bookDAO.findAllByPressLike("%华%");
@@ -114,12 +111,9 @@ class DemoApplicationTests {
 		// 	borrowlistDAO.delete(borrowlist);
 		// }
 		
-		Borrowlist borrowlist = new Borrowlist();
-		borrowlist.setBook(1);
-		borrowlist.setUser(1);
-		borrowlist.setDate("2020.11.16");
-		borrowlist.setHavereturn(false);
-		borrowlistService.add(borrowlist);
+		// Borrowlist borrowlist = new Borrowlist(1,1,false);
+
+		borrowlistService.add(1,1);
 		// List<Borrowlist> booklists = borrowlistDAO.findAll();
 		// if(booklists.size() == 0){
 		// 	System.out.println("没有对象！");
@@ -139,9 +133,8 @@ class DemoApplicationTests {
 
 	@Test 
 	void testRole(){
-		Role role = new Role();
-		role.setRoleid(5);
-		role.setRolename("jj");
+		Role role = new Role(5,"jj");
+
 		ros.add(role);
 		//System.out.print(ros.isExistByID(3));
 		assertEquals(role.getRolename(), ros.getByRoleId(5).getRolename());
@@ -156,9 +149,8 @@ class DemoApplicationTests {
 
 	@Test
 	void testPermission(){
-		Permission permission = new Permission();
-		permission.setPermissionid(2);
-		permission.setActualpermissionid("./hhhh");
+		Permission permission = new Permission(2,"./hhhh");
+
 		permissionService.add(permission);
 		//permissionService.deleteByPermissionID(2);
 	}
@@ -171,9 +163,8 @@ class DemoApplicationTests {
 
 	@Test
 	void testRolePermission(){
-		RolePermission rolePermission = new RolePermission();
-		rolePermission.setRoleid(1);
-		rolePermission.setPermissionid(2);
+		RolePermission rolePermission = new RolePermission(1,2);
+
 		rolepermissionService.add(rolePermission);
 		//rolepermissionService.deleteByRoleIDAndPermissionid(1, 2);
 
