@@ -4,11 +4,13 @@
   <el-form :model="registerForm" :rules="rules" class="login-container" label-position="left"
            label-width="0px" v-loading="loading">
     <h3 class="login_title">用户注册</h3>
-    <h4 class="login_background"></h4>
+    <h4 class="register_background"></h4>
+    <h5 class="username_rule">账号名开头两个字必须是刘鼎</h5>
     <el-form-item prop="username">
       <el-input type="text" v-model="registerForm.username"
                 auto-complete="off" placeholder="账号"></el-input>
     </el-form-item>
+    <h6 class="password_rule">密码开头两个字母必须是ld</h6>
     <el-form-item prop="password">
       <el-input type="password" v-model="registerForm.password"
                 auto-complete="off" placeholder="密码"></el-input>
@@ -142,19 +144,22 @@
   body{
     margin: -5px 0px;
   }
-  .login_background{
-	width: 100%;
-    height: 100%;
-	background-image: url(../assets/P1.jpg);
-	background-size: cover; /* 使图片平铺满整个浏览器（从宽和高的最大需求方面来满足，会使某些部分无法显示在区域中） */
-	position: absolute; /* 不可缺少 */
-	/* overflow: hidden; */
-	/* overflow: auto; */
-	z-index: -1;
-	background-repeat: no-repeat;
+  .register_background{
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 1400px;
+  height: 1400px;
+  padding: 10px;
+  color: red;
+  background: rgba(0, 0, 0, 0) url("../assets/background_1.jpg") no-repeat scroll 100% 100%;
+  background-size: auto;
+  background-size: cover;
+  z-index: -1;
 }
-/* 注释部分要不要都一样 */
 
+
+/* 注释部分要不要都一样 */
   .login-container {
     border-radius: 15px;
     background-clip: padding-box;
@@ -164,14 +169,30 @@
     background: #fff;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
+    z-index: 0;
   }
+
   .login_title {
     margin: 0px auto 40px auto;
     text-align: center;
     color: #505458;
+    z-index: 0;
+  }
+    .username_rule {
+    margin: -20px auto 5px auto;
+    text-align: left;
+    color:rgb(78, 117, 156)56);
+    z-index:0;
+  }
+  .password_rule {
+    margin: -20px auto 5px auto;
+    text-align: left;
+    color:rgb(78, 117, 156)56);
+    z-index:0;
   }
   .login_remember {
     margin: 0px 0px 35px 0px;
     text-align: left;
+    z-index: 0;
   }
 </style>
