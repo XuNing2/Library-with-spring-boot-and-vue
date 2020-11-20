@@ -24,7 +24,6 @@
                 <el-menu-item-group >
                     <el-menu-item index="/admin/queryUser">查询用户</el-menu-item>
                     <el-menu-item index="/admin/deleteUser">删除用户</el-menu-item>
-                    <el-menu-item index="/admin/changeUser">修改用户</el-menu-item>
                     <el-menu-item index="/admin/handleRequest">处理信息</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>

@@ -45,7 +45,7 @@
       init() {
         this.username = localStorage.getItem('username');
         this.$axios
-          .get('/personalcenter_state=cb', {
+          .get('/personalcenter/collectBook', {
             username: this.username,
           })
           .then(successResponse => {
@@ -59,7 +59,7 @@
       refresh_2() {
         this.username = localStorage.getItem('username');
         this.$axios
-          .get('/personalcenter_state=cb', {
+          .get('/personalcenter/collectBook', {
             username: this.username,
           })
           .then(successResponse => {

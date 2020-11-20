@@ -12,7 +12,6 @@ import Admin from '../components/admin/Admin'
 import queryUser from '../components/admin/UserManage/queryUser'
 import handleRequest from '../components/admin/UserManage/handleRequest'
 import deleteUser from '../components/admin/UserManage/deleteUser'
-import changeUser from '../components/admin/UserManage/changeUser'
 import addBook from '../components/admin/BookManage/addBook'
 import changeBook from '../components/admin/BookManage/changeBook'
 import deleteBook from '../components/admin/BookManage/deleteBook'
@@ -133,11 +132,6 @@ export default new VueRouter({
           name: "deleteUser",
           path: "deleteUser",
           component: deleteUser
-        },
-        {
-          name: "changeUser",
-          path: "changeUser",
-          component: changeUser
         },
         {
           name: "addBook",
