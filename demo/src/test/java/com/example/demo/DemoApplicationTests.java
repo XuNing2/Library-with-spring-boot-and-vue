@@ -140,11 +140,11 @@ class DemoApplicationTests {
 	@Test 
 	void testRole(){
 		Role role = new Role();
-		role.setRoleid(2);
+		role.setRoleid(5);
 		role.setRolename("jj");
 		ros.add(role);
 		//System.out.print(ros.isExistByID(3));
-		assertEquals(role.getRolename(), ros.getByRoleId(2).getRolename());
+		assertEquals(role.getRolename(), ros.getByRoleId(5).getRolename());
 	}
 
 

@@ -11,25 +11,79 @@ DROP TABLE IF EXISTS `role`;
 DROP TABLE IF EXISTS `permission`;
 
 -- ----------------------------
+-- Table structure for permission
+-- ----------------------------
+CREATE TABLE `permission` (
+  `permissionid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `actualPermissionid` varchar(255) DEFAULT NULL,
+  
+  PRIMARY KEY (`permissionid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+-- ----------------------------
+-- Records of permission
+-- ----------------------------
+INSERT INTO `permission` VALUES ('1', './sample');
+
+
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+CREATE TABLE `role` (
+  `roleid` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`rolename` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`roleid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES ('1','图书馆管理员');
+INSERT INTO `role` VALUES ('2','书籍管理员');
+INSERT INTO `role` VALUES ('3','用户管理员');
+INSERT INTO `role` VALUES ('4','读者');
+
+
+-- ----------------------------
+-- Table structure for rolePermission
+-- ----------------------------
+CREATE TABLE `rolePermission` (
+  `permissionid` int(11) unsigned NOT NULL,
+  `roleid` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`roleid`,`permissionid`),
+  CONSTRAINT `role_id` FOREIGN KEY (`roleid`) REFERENCES `role`(`roleid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `permission_ID` FOREIGN KEY (`permissionid`) REFERENCES `permission`(`permissionid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of rolePermission
+-- ----------------------------
+INSERT INTO `rolePermission` VALUES ('1', '1');
+
+-- ----------------------------
 -- Table structure for user
 -- ----------------------------
 CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `telephone` varchar(255) DEFAULT NULL,
+  `role_id` int(11) UNSIGNED DEFAULT 4,
+  PRIMARY KEY (`id`),
+  KEY `user_role_on_id`(`role_id`),
+  CONSTRAINT `user_role_on_id` FOREIGN KEY (`role_id`) REFERENCES `role`(`roleid`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '123456');
-INSERT INTO `user` VALUES ('2', 'lzh', '123456');
-INSERT INTO `user` VALUES ('3', 'lcc', '123456');
-INSERT INTO `user` VALUES ('4', 'lj', '123456');
-INSERT INTO `user` VALUES ('5', 'ld', '123456');
-INSERT INTO `user` VALUES ('6', 'xn', '123456');
-INSERT INTO `user` VALUES ('7', 'wwq', '123456');
+INSERT INTO `user` VALUES ('1', 'admin', '123456', '123456789', 4);
+INSERT INTO `user` VALUES ('2', 'lzh', '123456', '123456789', 3);
+INSERT INTO `user` VALUES ('3', 'lcc', '123456', '123456789', 2);
+INSERT INTO `user` VALUES ('4', 'lj', '123456', '123456789', 1);
+INSERT INTO `user` VALUES ('5', 'ld', '123456', '123456789', 2);
+INSERT INTO `user` VALUES ('6', 'xn', '123456', '123456789', 3);
+INSERT INTO `user` VALUES ('7', 'wwq', '123456', '123456789', 4);
 -- ----------------------------
 -- Table structure for category
 -- ----------------------------
@@ -102,49 +156,3 @@ INSERT INTO `borrowlist` VALUES ('3', '1', '2020.11.18', '1');
 INSERT INTO `borrowlist` VALUES ('2', '3', '2020.11.19', '0');
 INSERT INTO `borrowlist` VALUES ('3', '2', '2020.11.13', '0');
 
--- ----------------------------
--- Table structure for permission
--- ----------------------------
-CREATE TABLE `permission` (
-  `permissionid` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `actualPermissionid` varchar(255) DEFAULT NULL,
-  
-  PRIMARY KEY (`permissionid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
--- ----------------------------
--- Records of permission
--- ----------------------------
-INSERT INTO `permission` VALUES ('1', './sample');
-
-
-
--- ----------------------------
--- Table structure for role
--- ----------------------------
-CREATE TABLE `role` (
-  `roleID` int(11) unsigned NOT NULL AUTO_INCREMENT,
-	`roleName` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`roleID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role
--- ----------------------------
-INSERT INTO `role` VALUES ('1','管理员');
-
-
--- ----------------------------
--- Table structure for rolePermission
--- ----------------------------
-CREATE TABLE `rolePermission` (
-  `permissionid` int(11) unsigned NOT NULL,
-  `roleid` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`roleid`,`permissionid`),
-  CONSTRAINT `role_id` FOREIGN KEY (`roleid`) REFERENCES `role`(`roleid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `permission_ID1` FOREIGN KEY (`permissionid`) REFERENCES `permission`(`permissionid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of rolePermission
--- ----------------------------
-INSERT INTO `rolePermission` VALUES ('1', '1');

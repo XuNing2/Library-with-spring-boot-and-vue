@@ -4,6 +4,7 @@
   <el-form :model="registerForm" :rules="rules" class="login-container" label-position="left"
            label-width="0px" v-loading="loading">
     <h3 class="login_title">用户注册</h3>
+    <h4 class="login_background"></h4>
     <el-form-item prop="username">
       <el-input type="text" v-model="registerForm.username"
                 auto-complete="off" placeholder="账号"></el-input>
@@ -141,6 +142,19 @@
   body{
     margin: -5px 0px;
   }
+  .login_background{
+	width: 100%;
+    height: 100%;
+	background-image: url(../assets/P1.jpg);
+	background-size: cover; /* 使图片平铺满整个浏览器（从宽和高的最大需求方面来满足，会使某些部分无法显示在区域中） */
+	position: absolute; /* 不可缺少 */
+	/* overflow: hidden; */
+	/* overflow: auto; */
+	z-index: -1;
+	background-repeat: no-repeat;
+}
+/* 注释部分要不要都一样 */
+
   .login-container {
     border-radius: 15px;
     background-clip: padding-box;
