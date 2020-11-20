@@ -25,6 +25,12 @@ public class Borrowlist implements Comparable<Borrowlist>{
     @Column(name = "havereturn")
     private boolean havereturn;
 
+    public Borrowlist(int uid, int bid, boolean havereturn){
+        this.user = uid;
+        this.book = bid;
+        this.havereturn = havereturn;
+    }
+
     public boolean getHavereturn() {
         return havereturn;
     }
