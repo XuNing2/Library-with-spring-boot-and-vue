@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
 import com.example.demo.dao.BookDAO;
@@ -141,6 +143,8 @@ class DemoApplicationTests {
 		role.setRoleid(2);
 		role.setRolename("jj");
 		ros.add(role);
+		//System.out.print(ros.isExistByID(3));
+		assertEquals(role.getRolename(), ros.getByRoleId(2).getRolename());
 	}
 
 
@@ -156,6 +160,7 @@ class DemoApplicationTests {
 		permission.setPermissionid(2);
 		permission.setActualpermissionid("./hhhh");
 		permissionService.add(permission);
+		//permissionService.deleteByPermissionID(2);
 	}
 
 	@Autowired
@@ -170,7 +175,7 @@ class DemoApplicationTests {
 		rolePermission.setRoleid(1);
 		rolePermission.setPermissionid(2);
 		rolepermissionService.add(rolePermission);
-
+		//rolepermissionService.deleteByRoleIDAndPermissionid(1, 2);
 
 
 	}

@@ -29,8 +29,8 @@ public class PermissionService {
             System.out.print("该权限已存在！");
     }
 
-    public void deleteByPermissionID(Permission permission) {
-            permissionDAO.deleteByPermissionid(permission.getPermissionid());
+    public void deleteByPermissionID(int i) {
+            permissionDAO.deleteByPermissionid(i);
 
     }
 

@@ -16,7 +16,7 @@ public class RolePermissionService {
         return null!=rolePermission;
     }
 
-    private RolePermission getByRoleIDAndPermission(int roleID,int permission){
+    public RolePermission getByRoleIDAndPermission(int roleID,int permission){
         return rolePermissionDAO.findByRoleidAndPermissionid(roleID, permission);
     }
 
@@ -27,7 +27,7 @@ public class RolePermissionService {
             System.out.print("该角色权限已存在！");
     }
 
-    public void deleteByRoleIDAndPermission(int roleID,int permission){
+    public void deleteByRoleIDAndPermissionid(int roleID,int permission){
         rolePermissionDAO.deleteByRoleidAndPermissionid(roleID, permission);
     }
 

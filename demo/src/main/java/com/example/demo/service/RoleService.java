@@ -16,7 +16,7 @@ public class RoleService {
         return null!=role;
     }
 
-    private Role getByRoleName(String roleName) {
+    public Role getByRoleName(String roleName) {
         return roleDAO.findByRolename(roleName);
     }
 
@@ -25,7 +25,7 @@ public class RoleService {
         return null!=role;
     }
 
-    private Role getByRoleId(int roleId) {
+    public Role getByRoleId(int roleId) {
         return roleDAO.findByRoleid(roleId);
     }
 
