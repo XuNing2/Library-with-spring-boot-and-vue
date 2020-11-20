@@ -27,6 +27,10 @@ public class Book {
     @Column(name = "date")
     private String date;
 
+    public Book(){
+        
+    }
+
     public Book(String title, String author, String press, Category category)
     {
         this.title = title;
