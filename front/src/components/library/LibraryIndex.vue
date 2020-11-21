@@ -24,8 +24,8 @@
         //0全部 1文学 2流行 3文化 4生活 5经营 6科技
         var url = 'library/categories/' + cid + '/books'
         this.$axios.get(url).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.$refs.booksArea.books = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.$refs.booksArea.books = resp.data.result
           }
         })
       }

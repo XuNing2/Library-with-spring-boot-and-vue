@@ -66,15 +66,15 @@
       loadBooks () {
         var _this = this
         this.$axios.get('library/books').then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.books = resp.data.result
           }
         })
       },
       open(id) {
         this.$axios
               .post('/library/borrow', {id: id}).then(resp => {
-          if (resp && resp.status === 200) {
+          if (resp && resp.data.code === 200) {
             this.$alert('借书成功', '借书结果', {
               confirmButtonText: '确定',
               callback: action => {
@@ -109,8 +109,8 @@
         this.$axios
           .get('library/search/'+value+'?keywords=' + this.$refs.searchBar.keywords, {
           }).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.books = resp.data.result
           }
         })
       }   
