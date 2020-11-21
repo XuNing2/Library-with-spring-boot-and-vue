@@ -72,7 +72,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   KEY `user_role_on_id`(`role_id`),
   CONSTRAINT `user_role_on_id` FOREIGN KEY (`role_id`) REFERENCES `role`(`roleid`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
@@ -109,7 +109,7 @@ INSERT INTO `category` VALUES ('6', '剧本');
 -- Table structure for book
 -- ----------------------------
 CREATE TABLE `book` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL,
   `author` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `press` varchar(255) DEFAULT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id`),
   KEY `book_type_on_id`(`cate_id`),
   CONSTRAINT `book_type_on_id` FOREIGN KEY (`cate_id`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of book
@@ -145,7 +145,7 @@ CREATE TABLE `borrowlist` (
   KEY `borrowed_user_on_id`(`u_id`),
   CONSTRAINT `borrowed_book_on_id` FOREIGN KEY (`b_id`) REFERENCES `book`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `borrowed_user_on_id` FOREIGN KEY (`u_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of borrowlist

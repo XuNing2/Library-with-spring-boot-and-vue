@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,7 +37,7 @@ public class BorrowlistController {
     }
 
     //通过用户id查询该用户借阅记录
-    @GetMapping(value = "/personalcenter/{username}/borrowHistory")
+    @GetMapping(value = "/personalcenter/borrowHistory/{username}")
     @ResponseBody
     public Result listByUser(@PathVariable("username") String username){
         User user = userService.getByUsername(username);
@@ -56,6 +57,7 @@ public class BorrowlistController {
         }
     }
 
+    @PostMapping(value = "/library/borrow")
     @ResponseBody
     public Result BorrowBook(@PathVariable("uid") int uid, @PathVariable("bid") int bid){
         if(userService.getByUserid(uid) == null){

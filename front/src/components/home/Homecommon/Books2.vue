@@ -52,7 +52,7 @@
     methods: {
       loadBooks () {
         var _this = this
-        this.$axios.get('/books').then(resp => {
+        this.$axios.get('/books/latest6books').then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
           }
