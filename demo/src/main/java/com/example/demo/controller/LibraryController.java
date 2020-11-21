@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.io.Console;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -14,15 +14,15 @@ import com.example.demo.service.CategoryService;
 import com.example.demo.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@CrossOrigin
+@RestController
 public class LibraryController {
     @Autowired
     UserService userService;
@@ -35,9 +35,7 @@ public class LibraryController {
 
     //展现所有书籍
 
-    @CrossOrigin
     @GetMapping("api/library/books")
-    @ResponseBody
     public Result getAllBook(){
         List<Book> list = bookService.getAll();
         return ResultFactory.buildSuccessResult(list);
@@ -45,7 +43,6 @@ public class LibraryController {
 
     //根据书籍类别来查询书籍
     @GetMapping(value = "api/library/categories/{cid}/books")
-    @ResponseBody
     public Result listBookByCategory(@PathVariable("cid") int cid){
         if(categoryService.getById(cid) != null){
             List<Book> list = bookService.listByCategory(cid);
@@ -56,7 +53,6 @@ public class LibraryController {
     }
 
     @GetMapping(value = "api/library/search/1")
-    @ResponseBody
     public Result listByTitle(@RequestParam("keywords") String keywords){
         if("".equals(keywords)){
             return ResultFactory.buildSuccessResult(bookService.getAll());
@@ -66,7 +62,6 @@ public class LibraryController {
     }
 
     @GetMapping(value = "api/library/search/2")
-    @ResponseBody
     public Result listByPress(@RequestParam("press") String press){
         if("".equals(press)){
             return ResultFactory.buildSuccessResult(bookService.getAll());
@@ -76,7 +71,6 @@ public class LibraryController {
     }
 
     @GetMapping(value = "api/library/search/3")
-    @ResponseBody
     public Result listByAuthor(@RequestParam("keywords") String keywords){
         if("".equals(keywords)){
             return ResultFactory.buildSuccessResult(bookService.getAll());
@@ -86,7 +80,6 @@ public class LibraryController {
     }
 
 
-    @ResponseBody
     public Result getBookByid(@PathVariable("bid") int bid){
         if(bookService.getById(bid) != null){
             return ResultFactory.buildSuccessResult(bookService.getById(bid));
@@ -95,7 +88,6 @@ public class LibraryController {
         }
     }
 
-    @ResponseBody
     public Result deleteBookByid(@PathVariable("bid") int bid){
         if(bookService.getById(bid) != null){
             bookService.deleteById(bid);
@@ -105,7 +97,7 @@ public class LibraryController {
         }
     }
 
-    @ResponseBody
+
     public Result addBook(@RequestBody Book book){
         System.out.println("-----------------------------测试------------------------------------");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -126,7 +118,7 @@ public class LibraryController {
         return ResultFactory.buildSuccessResult(book);
     }
 
-    @ResponseBody
+
     public Result updateBook(@RequestBody Book book){
         // System.out.println("-----------------------------测试------------------------------------");
         // SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -153,7 +145,6 @@ public class LibraryController {
     }
 
     @GetMapping(value = "/books/latest6books")
-    @ResponseBody
     public Result getLatestItems()throws Exception{
         List<Book> list = bookService.getAll();
         list = bookService.sortDate(list);

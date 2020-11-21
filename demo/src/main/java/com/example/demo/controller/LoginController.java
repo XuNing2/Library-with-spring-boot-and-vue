@@ -6,22 +6,19 @@ import com.example.demo.result.ResultFactory;
 import com.example.demo.result.ResultCode;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
-import java.util.Objects;
 import javax.servlet.http.HttpSession;
 
-
-@Controller
+@CrossOrigin
+@RestController
 public class LoginController {
 
     @Autowired
     UserService userService;
 
-    @CrossOrigin
+
     @PostMapping(value = "api/login")
-    @ResponseBody
     public Result login(@RequestBody User requestUser, HttpSession session) {
         // Encrypt encrypt = new Encrypt();
         // String newpass = encrypt.md5Encode(requestUser.getPassword());

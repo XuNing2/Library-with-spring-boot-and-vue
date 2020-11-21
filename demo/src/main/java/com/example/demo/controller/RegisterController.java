@@ -8,14 +8,13 @@ import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-
-@Controller
+@CrossOrigin
+@RestController
 public class RegisterController {
     @Autowired
     UserService userService;
@@ -23,9 +22,7 @@ public class RegisterController {
     @Autowired
     RoleService roleService;
 
-    @CrossOrigin
     @PostMapping(value="api/register")
-    @ResponseBody
     public Result register(@RequestBody User user)throws Exception{
         final String CHINESE_LETTER_DIGIT_REGEX = "^[_a-z0-9A-Z\u4e00-\u9fa5]+$";
         if(null != user){
