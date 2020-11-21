@@ -20,7 +20,7 @@ public class LoginController {
     UserService userService;
 
     @CrossOrigin
-    @PostMapping(value = "/login")
+    @PostMapping(value = "api/login")
     @ResponseBody
     public Result login(@RequestBody User requestUser, HttpSession session) {
         // Encrypt encrypt = new Encrypt();
