@@ -30,7 +30,7 @@
     </el-form-item>
 
     <el-form-item style="width: 100%">
-      <el-button type="primrary"  style="width: 40%;background: #505458;border: none" v-on:click="register">立即注册</el-button>
+      <el-button type="success"  style="width: 40%;background: #505458;border: none" v-on:click="register">立即注册</el-button>
     </el-form-item>
   </el-form>
   </body>

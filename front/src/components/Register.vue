@@ -2,31 +2,31 @@
 <template>
   <body id="paper">
   <el-form :model="registerForm" :rules="rules" class="login-container" label-position="left"
-           label-width="0px" v-loading="loading">
+           label-width="0px" v-loading="loading"> 
     <h3 class="login_title">用户注册</h3>
     <h4 class="register_background"></h4>
-    <h5 class="username_rule">账号名开头两个字必须是刘鼎</h5>
+   <!-- <h5 class="username_rule">账号名开头两个字必须是刘鼎</h5> -->
     <el-form-item prop="username">
       <el-input type="text" v-model="registerForm.username"
                 auto-complete="off" placeholder="账号"></el-input>
     </el-form-item>
-    <h6 class="password_rule">密码开头两个字母必须是ld</h6>
+    <!--<h6 class="password_rule">密码开头两个字母必须是ld</h6>-->
     <el-form-item prop="password">
       <el-input type="password" v-model="registerForm.password"
                 auto-complete="off" placeholder="密码"></el-input>
     </el-form-item>
-    <el-form-item>
+    <!--<el-form-item>
       <el-input type="text" v-model="registerForm.name"
                 auto-complete="off" placeholder="真实姓名"></el-input>
-    </el-form-item>
+    </el-form-item>-->
     <el-form-item>
       <el-input type="text" v-model="registerForm.phone"
                 auto-complete="off" placeholder="电话号码"></el-input>
     </el-form-item>
-    <el-form-item>
+   <!-- <el-form-item>
       <el-input type="text" v-model="registerForm.email"
                 auto-complete="off" placeholder="E-Mail"></el-input>
-    </el-form-item>
+    </el-form-item>-->
     <el-form-item style="width: 100%">
       <el-button type="primary" style="width: 40%;background: #505458;border: none" v-on:click="register">注册</el-button>
     </el-form-item>
@@ -101,9 +101,9 @@
         registerForm: {
           username: '',
           password: '',
-          name: '',
-          phone: '',
-          email: ''
+          /*name: '',*/
+          phone: ''
+          /*email: ''*/
         },
         loading: false
       }
@@ -117,9 +117,9 @@
               //表格不能重名，并且要与方法统一
             username: this.registerForm.username,
             password: this.registerForm.password,
-            name: this.registerForm.name,
+           /* name: this.registerForm.name,*/
             phone: this.registerForm.phone,
-            email: this.registerForm.email
+           /* email: this.registerForm.email*/
           })
           .then(resp => {
             if (resp.data.code === 200) {
@@ -160,6 +160,7 @@
 
 
 /* 注释部分要不要都一样 */
+
   .login-container {
     border-radius: 15px;
     background-clip: padding-box;
