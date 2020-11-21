@@ -3,7 +3,7 @@
     <el-table
     :data="tableData"
     border
-    style="width: 100%">
+    style="width: 100%"
       <el-table-column
         prop="ISBN"
         label="ISBN"
@@ -19,6 +19,11 @@
         label="作者"
         >
       </el-table-column>
+      <el-table-column>
+        <template slot-scope="scope">
+          <el-button round @click="returnbook(scope.row.ISBN)" class="button">还书</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <el-footer>
       <el-button round @click="refresh()" class="button">刷新</el-button>
@@ -31,6 +36,7 @@
     data() {
       return {
         username: '',
+        row: '',
         tableData: [{
           ISBN: '',
           bookname: '',
@@ -70,10 +76,29 @@
           .catch(failResponse => {
           })
         this.tableData = [{
-          ISBN: '978-7-107-18618-5',
+          ISBN: '978-7-107-18618-6',
           bookname: '全国富婆通讯录',
           author: '李长春'
+        },
+        {
+          ISBN: '978-7-107-18618-5',
+          bookname: '全国富婆通讯录',
+          author: '许宁'
         }];
+      },
+      returnbook(val) {
+        this.$axios
+          .get('/personalcenter/returnBook', {
+            ISBN: val,
+          })
+          .then(successResponse => {
+            if (successResponse.data.code === 200) {
+              console.log(success);
+            }
+          })
+          .catch(failResponse => {
+            console.log(fail);
+          })
       }
     }
   }
