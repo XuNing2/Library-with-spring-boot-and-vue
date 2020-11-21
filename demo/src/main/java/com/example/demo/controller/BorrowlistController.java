@@ -37,7 +37,7 @@ public class BorrowlistController {
     }
 
     //通过用户id查询该用户借阅记录
-    @GetMapping(value = "/personalcenter/borrowHistory/{username}")
+    @GetMapping(value = "api/personalcenter/borrowHistory/{username}")
     @ResponseBody
     public Result listByUser(@PathVariable("username") String username){
         User user = userService.getByUsername(username);
@@ -57,7 +57,7 @@ public class BorrowlistController {
         }
     }
 
-    @PostMapping(value = "/library/borrow")
+    @PostMapping(value = "api/library/borrow")
     @ResponseBody
     public Result BorrowBook(@PathVariable("uid") int uid, @PathVariable("bid") int bid){
         if(userService.getByUserid(uid) == null){

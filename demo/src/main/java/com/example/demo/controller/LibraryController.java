@@ -33,7 +33,7 @@ public class LibraryController {
     CategoryService categoryService;
 
     //展现所有书籍
-    @GetMapping(value = "library/books")
+    @GetMapping(value = "api/library/books")
     @ResponseBody
     public Result getAllBook(){
         List<Book> list = bookService.getAll();
@@ -41,7 +41,7 @@ public class LibraryController {
     }
 
     //根据书籍类别来查询书籍
-    @GetMapping(value = "library/categories/{cid}/books")
+    @GetMapping(value = "api/library/categories/{cid}/books")
     @ResponseBody
     public Result listBookByCategory(@PathVariable("cid") int cid){
         if(categoryService.getById(cid) != null){
@@ -52,7 +52,7 @@ public class LibraryController {
         }
     }
 
-    @GetMapping(value = "library/search/1")
+    @GetMapping(value = "api/library/search/1")
     @ResponseBody
     public Result listByTitle(@RequestParam("keywords") String keywords){
         if("".equals(keywords)){
@@ -62,7 +62,7 @@ public class LibraryController {
         }
     }
 
-    @GetMapping(value = "library/search/2")
+    @GetMapping(value = "api/library/search/2")
     @ResponseBody
     public Result listByPress(@RequestParam("press") String press){
         if("".equals(press)){
@@ -72,7 +72,7 @@ public class LibraryController {
         }
     }
 
-    @GetMapping(value = "library/search/3")
+    @GetMapping(value = "api/library/search/3")
     @ResponseBody
     public Result listByAuthor(@RequestParam("keywords") String keywords){
         if("".equals(keywords)){

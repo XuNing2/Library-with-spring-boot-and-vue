@@ -22,10 +22,10 @@ public class RegisterController {
     @Autowired
     RoleService roleService;
 
-    @PostMapping(value="/register")
+    @PostMapping(value="api/register")
     @ResponseBody
-    public Result register(@RequestBody User user) {
-        final  String CHINESE_LETTER_DIGIT_REGEX = "^[_a-z0-9A-Z\u4e00-\u9fa5]+$";
+    public Result register(@RequestBody User user)throws Exception{
+        final String CHINESE_LETTER_DIGIT_REGEX = "^[_a-z0-9A-Z\u4e00-\u9fa5]+$";
         if(null != user){
             System.out.println("user不为空");
             //判断命名是否含有空格等
