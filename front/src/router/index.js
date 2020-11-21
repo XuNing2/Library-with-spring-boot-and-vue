@@ -90,24 +90,24 @@ export default new VueRouter({
             requireAuth: true
           }
         },
-        {
-          path: '/register',
-          name: 'Register',
-          component: Register,
-          meta: {
-            requireAuth: true
-        }
-        }
+      //  {
+      //    path: '/register',
+      //   name: 'Register',
+      //   component: Register,
+      //    meta: {
+      //      requireAuth: true
+      //  }
+       // }
       ]
     },
-    {
-      path: '/register',
-      name: 'Register',
-      component: Register,
-      meta: {
-        requireAuth: true
-      }
-    },
+  //  {
+  //    path: '/register',
+  //    name: 'Register',
+  //    component: Register,
+   //   meta: {
+    //    requireAuth: true
+    //  }
+    //},
     {
       path: '/login',
       name: 'Login',
@@ -158,14 +158,17 @@ export default new VueRouter({
         },
 
       ]
-    }
-    // {
-    //   path: '/personalcenter',
-    //   name: 'PersonalCenter',
-    //   component: PersonalCenter,
-    //   meta: {
-    //     requireAuth: true
-    //   },
+    },
+     {
+       path: '/register',
+       name: 'Register',
+       component: Register,
+       
+       meta: {
+         requireAuth: true
+       },
+      }
+    
     //   children: [
     //     {
     //       path: '/personalcenter/PI',
