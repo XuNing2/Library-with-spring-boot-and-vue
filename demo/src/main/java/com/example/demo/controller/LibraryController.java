@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,9 @@ public class LibraryController {
     CategoryService categoryService;
 
     //展现所有书籍
-    @GetMapping(value = "api/library/books")
+
+    @CrossOrigin
+    @GetMapping("api/library/books")
     @ResponseBody
     public Result getAllBook(){
         List<Book> list = bookService.getAll();

@@ -36,21 +36,34 @@
       init(){
         this.username = localStorage.getItem('username');
         this.$axios
-        .get('/personalcenter/personalInformation',{username: this.username})
-        .then((successResponse => {
-            if (successResponse.data.code === 200) {
+        .get('/personalcenter/'+this.username+'/personalInformation')
+        .then((resp => {
+            if (resp.data.code === 200) {
+              console.log(resp);
               document.getElementById("name").value = this.username;
-              document.getElementById("telephone").value = successResponse.data.telephone;
-              document.getElementById("role").value = successResponse.data.role;
+              document.getElementById("telephone").value = resp.data.result.telephone;
+              document.getElementById("role").value = resp.data.result.role.rolename;
             }
           }))
-        document.getElementById("name").value = this.username;
-        document.getElementById("telephone").value = "18012345678";
-        document.getElementById("role").value = "读者";
+        // document.getElementById("name").value = this.username;
+        // document.getElementById("telephone").value = "18012345678";
+        // document.getElementById("role").value = "读者";
       },
       change(){
-        this.status = false;
-        this.submit = false;
+        // this.status = false;
+        // this.submit = false;
+        // this.username = localStorage.getItem('username');
+        // console.log(this.username);
+        this.$axios
+        .get('/personalcenter/'+this.username+'/personalInformation')
+        .then((successResponse => {
+            if (successResponse.data.code === 200) {
+              // console.log(successResponse);
+              document.getElementById("name").value = this.username;
+              document.getElementById("telephone").value = successResponse.data.result.telephone;
+              document.getElementById("role").value = successResponse.data.result.role.rolename;
+            }
+          }))
       },
       submit(){
         this.$axios

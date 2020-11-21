@@ -20,7 +20,7 @@
                 auto-complete="off" placeholder="真实姓名"></el-input>
     </el-form-item>-->
     <el-form-item>
-      <el-input type="text" v-model="registerForm.phone"
+      <el-input type="text" v-model="registerForm.telephone"
                 auto-complete="off" placeholder="电话号码"></el-input>
     </el-form-item>
    <!-- <el-form-item>
@@ -102,7 +102,7 @@
           username: '',
           password: '',
           /*name: '',*/
-          phone: ''
+          telephone: ''
           /*email: ''*/
         },
         loading: false
@@ -118,7 +118,7 @@
             username: this.registerForm.username,
             password: this.registerForm.password,
            /* name: this.registerForm.name,*/
-            phone: this.registerForm.phone,
+            telephone: this.registerForm.telephone,
            /* email: this.registerForm.email*/
           })
           .then(resp => {
@@ -182,13 +182,13 @@
     .username_rule {
     margin: -20px auto 5px auto;
     text-align: left;
-    color:rgb(78, 117, 156)56);
+    color:rgb(78, 117, 156);
     z-index:0;
   }
   .password_rule {
     margin: -20px auto 5px auto;
     text-align: left;
-    color:rgb(78, 117, 156)56);
+    color:rgb(78, 117, 156);
     z-index:0;
   }
   .login_remember {
