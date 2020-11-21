@@ -10,7 +10,7 @@
           <span>{{item.author}}</span> /
           <span>{{item.press}}</span>
         </p>
-        <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
+        <p slot="content" style="width: 300px" class="abstract">{{item.outline}}</p>
         <el-card style="width: 135px;margin-bottom: 20px;height: 256px;float: left;margin-right: 15px" class="book"
                  bodyStyle="padding:10px" shadow="hover">
           <div class="cover">
@@ -18,7 +18,7 @@
           </div>
           <div class="info">
             <div class="title">
-              <a href="">{{item.title}}</a>
+              {{item.title}}
             </div>
           </div>
           <div class="author">{{item.author}}</div>
@@ -48,11 +48,13 @@
         books: [
           {
             id: 1,
-            cover: 'https://img3.doubanio.com/view/subject/l/public/s1228930.jpg',
-            title: '挪威的森林',
             author: '村上春树',
+            title: '挪威的森林',
             press: '上海译文出版社',
-            abs: '故事讲述主角纠缠在情绪不稳定且患有精神疾病的直子和开朗活泼的小林绿子之间，展开了自我成长的旅程。自该书在日本问世，截止2012年在日本共销出1500余万册。'
+            cate_id: 1,
+            date: '2019.09.11',
+            cover: 'https://img3.doubanio.com/view/subject/l/public/s1228930.jpg',
+            outline: '故事讲述主角纠缠在情绪不稳定且患有精神疾病的直子和开朗活泼的小林绿子之间，展开了自我成长的旅程。自该书在日本问世，截止2012年在日本共销出1500余万册。',
           }
         ],
         currentPage: 1,
@@ -100,7 +102,6 @@
       },
       handleCurrentChange: function (currentPage) {
         this.currentPage = currentPage
-        console.log(this.currentPage)
       },
       searchResult () {
         var _this = this

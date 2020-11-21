@@ -10,27 +10,27 @@
     </el-menu-item>
     <el-menu-item index="1">
       <i class="el-icon-menu"></i>
-      <span slot="title">文学</span>
+      <span slot="title">传记</span>
     </el-menu-item>
     <el-menu-item index="2">
       <i class="el-icon-menu"></i>
-      <span slot="title">流行</span>
+      <span slot="title">小说</span>
     </el-menu-item>
     <el-menu-item index="3">
       <i class="el-icon-menu"></i>
-      <span slot="title">文化</span>
+      <span slot="title">教科书</span>
     </el-menu-item>
     <el-menu-item index="4">
       <i class="el-icon-menu"></i>
-      <span slot="title">生活</span>
+      <span slot="title">学术论文</span>
     </el-menu-item>
     <el-menu-item index="5">
       <i class="el-icon-menu"></i>
-      <span slot="title">经管</span>
+      <span slot="title">漫画</span>
     </el-menu-item>
     <el-menu-item index="6">
       <i class="el-icon-menu"></i>
-      <span slot="title">科技</span>
+      <span slot="title">剧本</span>
     </el-menu-item>
   </el-menu>
 </template>
