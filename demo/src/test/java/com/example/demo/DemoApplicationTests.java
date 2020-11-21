@@ -26,6 +26,7 @@ import com.example.demo.service.CategoryService;
 import com.example.demo.service.PermissionService;
 import com.example.demo.service.RolePermissionService;
 import com.example.demo.service.RoleService;
+import com.example.demo.service.UserService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,9 @@ class DemoApplicationTests {
 	UserDAO userDAO;
 
 	@Autowired
+	UserService userService;
+
+	@Autowired
 	CategoryService categoryService;
 
 	@Autowired
@@ -59,6 +63,16 @@ class DemoApplicationTests {
 	LibraryController libraryController;
 
 
+
+	@Test
+	void testUser(){
+		User user =new User("name", "12", "t2elephone");
+		user.setRole(new Role(4, "读者"));
+		user.setId(8);
+		//userService.add(user);
+		//userService.delById(user);
+		userService.update(user);
+	}
 
 	@Test
 	void testBook() {
@@ -137,11 +151,15 @@ class DemoApplicationTests {
 
 	@Test 
 	void testRole(){
-		Role role = new Role(5,"jj");
+		Role role = new Role(4,"jj");
 
-		ros.add(role);
+		//ros.add(role);
 		//System.out.print(ros.isExistByID(3));
-		assertEquals(role.getRolename(), ros.getByRoleId(5).getRolename());
+		//assertEquals(role.getRolename(), ros.getByRoleId(5).getRolename());
+
+		//ros.deleteByRoleId(role);
+
+		ros.update(role);
 	}
 
 
@@ -157,6 +175,7 @@ class DemoApplicationTests {
 
 		permissionService.add(permission);
 		//permissionService.deleteByPermissionID(2);
+		permissionService.update(permission);
 	}
 
 	@Autowired
@@ -167,10 +186,11 @@ class DemoApplicationTests {
 
 	@Test
 	void testRolePermission(){
-		RolePermission rolePermission = new RolePermission(1,2);
+		RolePermission rolePermission = new RolePermission(3,1);
 
-		rolepermissionService.add(rolePermission);
+		// rolepermissionService.add(rolePermission);
 		//rolepermissionService.deleteByRoleIDAndPermissionid(1, 2);
+		rolepermissionService.update(rolePermission);
 
 
 	}

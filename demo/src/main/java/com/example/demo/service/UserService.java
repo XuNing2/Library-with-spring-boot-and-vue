@@ -47,5 +47,9 @@ public class UserService {
         userDAO.save(user);
     }
 
+    public void delById(User user){
+        userDAO.deleteById(user.getId());
+    }
+
     
 }

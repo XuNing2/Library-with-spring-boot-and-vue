@@ -1,5 +1,7 @@
 package com.example.demo.dao;
 
+import javax.transaction.Transactional;
+
 import com.example.demo.pojo.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,4 +15,7 @@ public interface UserDAO extends JpaRepository<User, Integer>{
 
     //通过用户名和密码查询用户，在登陆时需要使用
     User getByUsernameAndPassword(String username, String password);
+
+    @Transactional
+    void deleteById(int id);
 }

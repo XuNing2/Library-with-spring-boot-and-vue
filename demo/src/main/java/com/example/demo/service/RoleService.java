@@ -36,6 +36,10 @@ public class RoleService {
             System.out.print("该角色已存在！");
     }
 
+    public void update(Role role) {
+        roleDAO.save(role);
+    }
+
     public void deleteByRoleId(Role role) {
         roleDAO.deleteByRoleid(role.getRoleid());
     }
