@@ -7,7 +7,7 @@
       <span>电话 :</span>
       <input id= "telephone" name="telephone" v-model="info.telephone" :readonly="status"/>
       <span>角色 :</span>
-      <input id= "role" name="role" v-model="info.role" :readonly="status"/>
+      <input id= "role" name="role" readonly="status"/>
     </label>
     <el-button @click="change()">修改个人信息</el-button>
     <el-button native-type='submit' id="submit" @click="submit()" :disabled="submit">提交个人信息</el-button>
