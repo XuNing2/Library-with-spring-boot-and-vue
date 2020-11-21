@@ -1,12 +1,12 @@
 <template>
-  <el-container>
+   <!-- <el-container>
     <el-header style="margin-top: 5px; text-color: red">
         管理员界面
-    </el-header>
-    <el-container>
+    </el-header> -->
+    <!-- <el-container> -->
     <!-- <el-aside style="margin-top: 30px"> -->
-      <el-row>
-        <el-col :span="10" style="width: 205px">
+      <!-- <el-row> -->
+        <el-col :span="10" style="width: 205px; margin-top: 20px; margin-left: 20px">
             <el-menu
             :default-active="this.$route.path"
             class="el-menu-vertical-demo"
@@ -41,10 +41,10 @@
               </el-submenu>
             </el-menu>
         </el-col>
-      </el-row>
+      <!-- </el-row> -->
     <!-- </el-aside> -->
-    </el-container>
-  </el-container>
+    <!-- </el-container> -->
+  <!-- </el-container> -->
 </template>
 
 <script>

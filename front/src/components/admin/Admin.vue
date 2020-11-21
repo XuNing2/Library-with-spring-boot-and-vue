@@ -1,5 +1,8 @@
 <template>
+  <div>
     <side-menu></side-menu>
+    <router-view/>
+  </div>
 </template>
 
 <script>

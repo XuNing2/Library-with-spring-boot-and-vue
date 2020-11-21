@@ -120,37 +120,40 @@ export default new VueRouter({
       children: [
         {
           name: "queryUser",
-          path: "queryUser",
-          component: queryUser
+          path: "/admin/queryUser",
+          component: queryUser,
+          meta: {
+            requireAuth: true
+          }
         },
         {
           name: "handleRequest",
-          path: "handleRequest",
+          path: "/admin/handleRequest",
           component: handleRequest
         },
         {
           name: "deleteUser",
-          path: "deleteUser",
+          path: "/admin/deleteUser",
           component: deleteUser
         },
         {
           name: "addBook",
-          path: "addBook",
+          path: "/admin/addBook",
           component: addBook
         },
         {
           name: "changeBook",
-          path: "changeBook",
+          path: "/admin/changeBook",
           component: changeBook
         },
         {
           name: "deleteBook",
-          path: "deleteBook",
+          path: "/admin/deleteBook",
           component: deleteBook
         },
         {
           name: "queryBook",
-          path: "queryBook",
+          path: "/admin/queryBook",
           component: queryBook
         },
 
