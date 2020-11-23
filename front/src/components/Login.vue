@@ -60,8 +60,25 @@
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
+              // goto();
               this.$router.replace({path: '/index'});
               localStorage.setItem('username',this.loginForm.username)
+            }
+          })
+          .catch(failResponse => {
+          })
+      },
+      goto() {
+        this.$axios
+          .get('/login/'+this.loginForm.username+'/goto')
+          .then(successResponse => {
+            if (successResponse.data.code === 200) {
+              if(successResponse.data.role_id == '1'){
+                this.$router.replace({path: '/index'});
+              }
+              else if(successResponse.data.role_id == '2'){
+                this.$router.replace({path: '/admin'});
+              }
             }
           })
           .catch(failResponse => {
