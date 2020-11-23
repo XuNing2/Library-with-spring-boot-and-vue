@@ -6,6 +6,7 @@
     <!-- <el-container> -->
     <!-- <el-aside style="margin-top: 30px"> -->
       <!-- <el-row> -->
+        <div>
         <el-col :span="10" style="width: 205px; margin-top: 20px; margin-left: 20px">
             <el-menu
             :default-active="this.$route.path"
@@ -22,9 +23,9 @@
                     <span>用户管理</span>
                 </template>
                 <el-menu-item-group >
-                    <el-menu-item index="/admin/queryUser">查询用户</el-menu-item>
-                    <el-menu-item index="/admin/deleteUser">删除用户</el-menu-item>
-                    <el-menu-item index="/admin/handleRequest">处理信息</el-menu-item>
+                    <el-menu-item index="/admin/manageUser">管理用户</el-menu-item>
+                    <!-- <el-menu-item index="/admin/deleteUser">删除用户</el-menu-item>
+                    <el-menu-item index="/admin/handleRequest">处理信息</el-menu-item> -->
                 </el-menu-item-group>
               </el-submenu>
               <el-submenu index="2">
@@ -33,10 +34,10 @@
                     <span>图书管理</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="/admin/addBook">添加图书</el-menu-item>
-                    <el-menu-item index="/admin/queryBook">查询图书</el-menu-item>
+                    <el-menu-item index="/admin/manageBook">管理图书</el-menu-item>
+                    <!-- <el-menu-item index="/admin/queryBook">查询图书</el-menu-item>
                     <el-menu-item index="/admin/deleteBook">删除图书</el-menu-item>
-                    <el-menu-item index="/admin/changeBook">修改图书</el-menu-item>
+                    <el-menu-item index="/admin/changeBook">修改图书</el-menu-item> -->
                 </el-menu-item-group>
               </el-submenu>
             </el-menu>
@@ -45,6 +46,7 @@
     <!-- </el-aside> -->
     <!-- </el-container> -->
   <!-- </el-container> -->
+  </div>
 </template>
 
 <script>

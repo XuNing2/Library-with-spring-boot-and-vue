@@ -9,13 +9,9 @@ import PersonalCenter from '../components/personalcenter/PersonalCenter'
 import Register from '../components/Register.vue'
 import LibraryIndex from '../components/library/LibraryIndex'
 import Admin from '../components/admin/Admin'
-import queryUser from '../components/admin/UserManage/queryUser'
-import handleRequest from '../components/admin/UserManage/handleRequest'
-import deleteUser from '../components/admin/UserManage/deleteUser'
-import addBook from '../components/admin/BookManage/addBook'
-import changeBook from '../components/admin/BookManage/changeBook'
-import deleteBook from '../components/admin/BookManage/deleteBook'
-import queryBook from '../components/admin/BookManage/queryBook'
+import manageUser from '../components/admin/UserManage/manageUser'
+import manageBook from '../components/admin/BookManage/manageBook'
+
 Vue.use(VueRouter)
 //pus
 // const routes = [
@@ -119,44 +115,18 @@ export default new VueRouter({
       component: Admin,
       children: [
         {
-          name: "queryUser",
-          path: "/admin/queryUser",
-          component: queryUser,
+          name: "manageUser",
+          path: "/admin/manageUser",
+          component: manageUser,
           meta: {
             requireAuth: true
           }
         },
         {
-          name: "handleRequest",
-          path: "/admin/handleRequest",
-          component: handleRequest
+          name: "manageBook",
+          path: "/admin/manageBook",
+          component: manageBook
         },
-        {
-          name: "deleteUser",
-          path: "/admin/deleteUser",
-          component: deleteUser
-        },
-        {
-          name: "addBook",
-          path: "/admin/addBook",
-          component: addBook
-        },
-        {
-          name: "changeBook",
-          path: "/admin/changeBook",
-          component: changeBook
-        },
-        {
-          name: "deleteBook",
-          path: "/admin/deleteBook",
-          component: deleteBook
-        },
-        {
-          name: "queryBook",
-          path: "/admin/queryBook",
-          component: queryBook
-        },
-
       ]
     },
      {
