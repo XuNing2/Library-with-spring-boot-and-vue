@@ -69,7 +69,7 @@ public class BorrowlistController {
         }        
     }
 
-
+    @GetMapping(value = "api/personalcenter/returnBook")
     public Result ReturnBook(@RequestBody Borrowlist borrowlist){
         if(userService.getByUserid(borrowlist.getUser()) == null){
             return ResultFactory.buildFailResult("不存在该用户！");
