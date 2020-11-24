@@ -99,8 +99,8 @@
   position: absolute;
   left: 0%;
   top: 0%;
-  width: 1400px;
-  height: 800px;
+  width: 2000px;
+  height: 1000px;
   padding: 10px;
   color: red;
   z-index:-1;
