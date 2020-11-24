@@ -10,7 +10,7 @@
     border
     style="width: 100%">
       <el-table-column
-        prop="name"
+        prop="username"
         label="用户名"
         >
       </el-table-column>
@@ -20,13 +20,13 @@
         >
       </el-table-column>
       <el-table-column
-        prop="role"
+        prop="role.rolename"
         label="角色"
         >
       </el-table-column>
       <el-table-column>
         <template slot-scope="scope">
-          <el-button round @click="deleteUser(scope.row.name)">删除</el-button>
+          <el-button round @click="deleteUser(scope.row.username)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -38,13 +38,13 @@
       <table class="white-pink">
     <label>
       <span>用户名 :</span>
-      <input id= "name" name="name" v-model="info.name"/>
+      <input id= "name" name="name" v-model="info.username"/>
       <span>密码 :</span>
       <input id= "password" name="name" v-model="info.password"/>
       <span>电话 :</span>
       <input id= "telephone" name="telephone" v-model="info.telephone"/>
       <span>角色 :</span>
-      <input id= "role" name="role" v-model="info.role"/>
+      <input id= "role" name="role" v-model="info.role_id"/>
     </label>
     <el-button native-type='submit' round id="submit" @click="submit()">提交信息</el-button>
   </table>
@@ -60,15 +60,18 @@ export default {
     data(){
       return {
         info:{
-          name: '',
+          username: '',
           password: '',
           telephone: '',
-          role: ''
+          role_id: ''
         },
         tableData: [{
-          name: '',
+          username: '',
           telephone: '',
-          role: ''
+          role: {
+            roleid: '',
+            rolename: ''
+          }
         }]
       }
     },
@@ -81,29 +84,20 @@ export default {
         .get('/admin/manageUser')
         .then((successResponse => {
             if (successResponse.data.code === 200) {
-              this.tableData = successResponse.data.tableData;
+              this.tableData = successResponse.data.result;
             }
           }))
-        this.tableData = [{
-          name: '张三',
-          telephone: '12345678910',
-          role: '读者'
-        },
-        {
-          name: '李四',
-          telephone: '12345678910',
-          role: '读者'
-        }];
       },
       deleteUser(val) {
-        console.log(val)
+        console.log(val);
         this.$axios
         .post('/admin/manageUser/'+val+'/deleteUser')
         .then((successResponse => {
             if (successResponse.data.code === 200) {
+              console.log(successResponse);
             }
           }))
-        this.init();
+          location.reload();
       },
       addUser(){
         document.getElementById("addUserElement1").style.display = '';
@@ -114,19 +108,20 @@ export default {
         document.getElementById("addUserElement2").style.display = 'none';
       },
       submit(){
-        console.log(val)
+        console.log(this.info.username);
         this.$axios
         .post('/admin/manageUser/addUser',{
-          name: this.info.name,
+          username: this.info.username,
           password: this.info.password,
           telephone: this.info.telephone,
-          role: this.info.role
+          // role: this.info.role_id
         })
         .then((successResponse => {
             if (successResponse.data.code === 200) {
+              console.log(successResponse);
             }
           }))
-        this.init();
+          location.reload();
       }
     }
 }
