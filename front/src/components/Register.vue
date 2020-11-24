@@ -30,6 +30,9 @@
     <el-form-item style="width: 100%">
       <el-button type="primary" style="width: 40%;background: #505458;border: none" v-on:click="register">注册</el-button>
     </el-form-item>
+       <el-form-item style="width: 100%">
+      <el-button type="success"  style="width: 40%;background: #505458;border: none" v-on:click="login">登录</el-button>
+    </el-form-item>
   </el-form>
   </body>
 </template>
@@ -134,6 +137,10 @@
             }
           })
           .catch(failResponse => {})
+      },
+            login()
+      {
+        this.$router.push({ name:'Login'})
       }
     }
   }
@@ -148,7 +155,7 @@
   position: absolute;
   left: 0%;
   top: 0%;
-  width: 1400px;
+  width: 2000px;
   height: 1400px;
   padding: 10px;
   color: red;
