@@ -10,7 +10,7 @@
           <span>{{item.press}}</span>
         </p>
         <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
-        <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
+        <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 55px" class="book"
                  bodyStyle="padding:10px" shadow="hover">
           <div class="cover">
             <img :src="item.cover" alt="封面">
@@ -53,7 +53,8 @@
     methods: {
       loadBooks () {
         var _this = this
-        this.$axios.get('/firstpage/books').then(resp => {
+
+        this.$axios.get('/firstpage/latest6books').then(resp => {
           console.log(resp);
           if (resp && resp.data.code === 200) {
             console.log(resp);
