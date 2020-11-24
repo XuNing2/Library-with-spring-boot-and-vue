@@ -85,10 +85,10 @@ import Xiaoxitongzhi from './Homecommon/xiaoxitongzhi.vue'
 
 <style scoped>
 .setbg{
-  background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605866129084&di=4951638f6d4081208adb48117cb6b6bf&imgtype=0&src=http%3A%2F%2Fwww.51yuansu.com%2Fpic2%2Fcover%2F00%2F16%2F42%2F579b47c7588c4_610.jpg);
+  background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606195920574&di=84ba8ffae37af777f86f81f6c97b7f6b&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fback_pic%2F00%2F00%2F69%2F40%2Fe3af86185bed940d698d09f19a9df985.jpg);
 }
 .books-area {
-    width: 990px;
+    width: 970px;
     margin-left: auto;
     margin-right: auto;
   }

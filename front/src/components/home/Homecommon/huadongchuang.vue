@@ -17,8 +17,8 @@
   }
 
   .image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 700PX;
+    max-height:500px;
   }
 </style>
 
@@ -27,7 +27,7 @@
     data(){
       return {
 
-        imagesbox:[{id:0,idView:require("../../../assets/P1.jpg")}, 
+        imagesbox:[{id:0,idView:require("../../../assets/P5.jpg")}, 
                    {id:1,idView:require("../../../assets/P2.jpg")},
                   {id:2,idView:require("../../../assets/P3.jpg")},
                   {id:3,idView:require("../../../assets/P4.jpg")},
