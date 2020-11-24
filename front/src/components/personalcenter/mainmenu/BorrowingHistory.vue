@@ -3,25 +3,27 @@
     <el-table
     :data="tableData"
     border
-    style="width: 100%">
+    style="width: 100%"
+    >
       <el-table-column
-        prop="ISBN"
-        label="ISBN"
-        >
-      </el-table-column>
-      <el-table-column
-        prop="bookname"
+        prop="book"
         label="书名"
         >
       </el-table-column>
       <el-table-column
-        prop="author"
-        label="作者"
+        prop="date"
+        label="日期"
+        >
+      </el-table-column>
+      <el-table-column
+        prop="havereturn"
+        label="归还"
+        :formatter="formatterColumn"
         >
       </el-table-column>
       <el-table-column>
         <template slot-scope="scope">
-          <el-button round @click="returnbook(scope.row.ISBN)" class="button">还书</el-button>
+          <el-button round @click="returnbook(scope.row)" class="button">还书</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -38,9 +40,10 @@
         username: '',
         row: '',
         tableData: [{
-          ISBN: '',
-          bookname: '',
-          author: ''
+          user: '',
+          book: '',
+          date: '',
+          havereturn: ''
         }]
       }
     },
@@ -51,12 +54,11 @@
       init() {
         this.username = localStorage.getItem('username');
         this.$axios
-          .get('/personalcenter/borrowHistory', {
-            username: this.username,
-          })
+          .get('/personalcenter/borrowHistory?username='+this.username, {})
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              this.tableData = successResponse.data;
+              console.log(successResponse);
+              this.tableData = successResponse.data.result;
             }
           })
           .catch(failResponse => {
@@ -64,41 +66,52 @@
       },
       refresh() {
         this.username = localStorage.getItem('username');
+        // u_id = localStorage.getItem('userid');
         this.$axios
-          .get('/personalcenter/borrowHistory', {
-            username: this.username,
-          })
+          .get('/personalcenter/borrowHistory?username='+this.username, {})
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              this.tableData = successResponse.data;
+              console.log("借阅");
+              console.log(successResponse);
+              this.tableData = successResponse.data.result;
             }
           })
           .catch(failResponse => {
           })
-        this.tableData = [{
-          ISBN: '978-7-107-18618-6',
-          bookname: '全国富婆通讯录',
-          author: '李长春'
-        },
-        {
-          ISBN: '978-7-107-18618-5',
-          bookname: '全国富婆通讯录',
-          author: '许宁'
-        }];
+        // this.tableData = [{
+        //   ISBN: '978-7-107-18618-6',
+        //   bookname: '全国富婆通讯录',
+        //   author: '李长春'
+        // },
+        // {
+        //   ISBN: '978-7-107-18618-5',
+        //   bookname: '全国富婆通讯录',
+        //   author: '许宁'
+        // }];
       },
       returnbook(val) {
+        // var u_id = localStorage.getItem('userid');
+        // console.log(u_id);
         this.$axios
-          .get('/personalcenter/returnBook', {
-            ISBN: val,
+          .post('/personalcenter/returnBook', {
+            book: val.book,
+            user: val.user,
+            date: val.date,
+            havereturn: val.havereturn
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              console.log(success);
+              console.log("guihuan");
+              console.log(successResponse);
             }
           })
           .catch(failResponse => {
-            console.log(fail);
+            console.log(failResponse);
           })
+          location.reload();
+      },
+      formatterColumn(row, column) {
+        return row.havereturn  == 0 ? '未归还' : "已归还";
       }
     }
   }

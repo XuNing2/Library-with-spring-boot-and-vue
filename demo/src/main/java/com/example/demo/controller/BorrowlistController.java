@@ -44,9 +44,9 @@ public class BorrowlistController {
         if(user != null){
             System.out.println("借阅记录！");
             System.out.println(user.getId());
-            for(Borrowlist o :borrowlistService.getByUser(user.getId())){
-                System.out.println(o.getBook());
-            }
+            // for(Borrowlist o :borrowlistService.getByUser(user.getId())){
+            //     System.out.println(o.getBook());
+            // }
             return ResultFactory.buildSuccessResult(borrowlistService.getByUser(user.getId()));
         }else{
             return ResultFactory.buildFailResult("不存在该用户！");
@@ -63,22 +63,32 @@ public class BorrowlistController {
     }
 
     @PostMapping(value = "api/library/borrow")
-    public Result BorrowBook(@RequestParam("username") String username, @RequestParam("bid") int bid){
-        if(userService.getByUsername(username) == null){
+    public Result BorrowBook(@RequestBody Borrowlist borrowlist){
+        System.out.println(borrowlist.getUser());
+        System.out.println(borrowlist.getBook());
+        System.out.println(borrowlist.getDate());
+        System.out.println(borrowlist.getHavereturn());
+        if(userService.getByUserid(borrowlist.getUser()) == null){
+            System.out.println(borrowlist.getUser());
+            System.out.println("1\n");
             return ResultFactory.buildFailResult("不存在该用户！");
-        }else if(bookService.getById(bid) == null){
+        }else if(bookService.getById(borrowlist.getBook()) == null){
+            System.out.println(borrowlist.getBook());
+            System.out.println("2\n");
             return ResultFactory.buildFailResult("不存在该书籍！");
-        }else if(!borrowlistService.canBorrow(bid)){
+        }else if(!borrowlistService.canBorrow(borrowlist.getBook())){
+            System.out.println(borrowlist.getHavereturn());
+            System.out.println("3\n");
             return ResultFactory.buildFailResult("该书已被他人借阅！");
         }else{
-            int uid = userService.getByUsername(username).getId();
+            // int uid = userService.getByUserid(uid);
             System.out.println("借书成功！");
-            borrowlistService.add(uid, bid);
+            borrowlistService.add(borrowlist.getUser(), borrowlist.getBook());
             return ResultFactory.buildSuccessResult(borrowlistService.getAll());
         }        
     }
 
-    @GetMapping(value = "api/personalcenter/returnBook")
+    @PostMapping(value = "api/personalcenter/returnBook")
     public Result ReturnBook(@RequestBody Borrowlist borrowlist){
         if(userService.getByUserid(borrowlist.getUser()) == null){
             return ResultFactory.buildFailResult("不存在该用户！");
