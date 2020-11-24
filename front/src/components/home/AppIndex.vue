@@ -77,16 +77,7 @@ import Xiaoxitongzhi from './Homecommon/xiaoxitongzhi.vue'
     components: {huadongchuang, Xiaoxitongzhi,Books},
     
      method:{
-     searchResult () {
-        var _this = this
-        this.$axios
-          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
-          }).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
-          }
-        })
-      } 
+    
   }
   }
  

@@ -20,6 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import com.example.demo.utils.StringUtils;
 
 @CrossOrigin
 @RestController
@@ -62,7 +68,7 @@ public class LibraryController {
     }
 
     @GetMapping(value = "api/library/search/2")
-    public Result listByPress(@RequestParam("press") String press){
+    public Result listByPress(@RequestParam("keywords") String press){
         if("".equals(press)){
             return ResultFactory.buildSuccessResult(bookService.getAll());
         }else{
@@ -144,17 +150,39 @@ public class LibraryController {
         return ResultFactory.buildSuccessResult(book);
     }
 
-    @GetMapping(value = "/books/latest6books")
+    @GetMapping(value = "api/firstpage/latest6books")
     public Result getLatestItems()throws Exception{
         List<Book> list = bookService.getAll();
         list = bookService.sortDate(list);
-        if(list.size()<10){
+        if(list.size()<6){
             return ResultFactory.buildSuccessResult(list);
         }
         else{
-            return ResultFactory.buildSuccessResult(list.subList(0, 10));
+            return ResultFactory.buildSuccessResult(list.subList(0, 6));
         }
 
+    }
+
+    @PostMapping("/api/admin/content/books/covers")
+    public Result coversUpload(@RequestBody MultipartFile file) throws Exception {
+        String folder = "C:/libraryimg";
+        File imageFolder = new File(folder);
+        File f = new File(imageFolder, StringUtils.getRandomString(6)
+                + file.getOriginalFilename().substring(file.getOriginalFilename().length() - 4));
+        if (!f.getParentFile().exists()) {
+            f.getParentFile().mkdirs();
+        }
+        try {
+            file.transferTo(f);
+            ;
+            String imgURL = "http://localhost:8080/api/file/" + f.getName();
+            System.out.println("调用了/api/covers接口");
+            return ResultFactory.buildSuccessResult(imgURL);
+        } catch (IOException e) {
+            System.out.println("调用了/api/covers接口，但是报错了");
+            e.printStackTrace();
+            return ResultFactory.buildFailResult("");
+        }
     }
 
 
