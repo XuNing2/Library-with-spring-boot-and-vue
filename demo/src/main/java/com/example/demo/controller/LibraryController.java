@@ -154,6 +154,7 @@ public class LibraryController {
     public Result getLatestItems()throws Exception{
         List<Book> list = bookService.getAll();
         list = bookService.sortDate(list);
+        System.out.println("调用了接口");
         if(list.size()<6){
             return ResultFactory.buildSuccessResult(list);
         }
