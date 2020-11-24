@@ -44,6 +44,9 @@ public class BorrowlistService {
     }
 
     public boolean canBorrow(int bookid){
+        List<Borrowlist> o = borrowlistDAO.findByBook(bookid);
+        if(o.size() == 0)
+            return true;
         List<Borrowlist> borrowlists = borrowlistDAO.findByBookAndHavereturn(bookid, true);
         return borrowlists == null;
     }
