@@ -7,7 +7,7 @@
       <button v-on:click="login">登录</button>
   </el-card>
 </template>-->
-//登录功能实现
+//登录功能实现实现
 <template>
   <body id="paper">
   <el-form :model="admin_loginForm" :rules="rules" class="login-container" label-position="left"
