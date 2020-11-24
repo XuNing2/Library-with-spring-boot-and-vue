@@ -37,6 +37,7 @@
       return {
         books: [
             {
+            id:'1',
             cover: 'https://img3.doubanio.com/view/subject/l/public/s1228930.jpg',
             title: '挪威的森林',
             author: '村上春树',
@@ -52,9 +53,11 @@
     methods: {
       loadBooks () {
         var _this = this
-        this.$axios.get('/books/latest6books').then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
+        this.$axios.get('/library/books').then(resp => {
+          console.log(resp);
+          if (resp && resp.data.code === 200) {
+            console.log(resp);
+            _this.books = resp.data.result
           }
         })
       },
@@ -92,6 +95,11 @@
     font-size: 13px;
     margin-bottom: 6px;
     text-align: left;
+  }
+
+  .borrow{
+    float: left;
+    font-size: 10px;
   }
 
   .abstract {
