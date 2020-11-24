@@ -56,14 +56,16 @@ public class BorrowlistController {
     }
 
     @PostMapping(value = "api/library/borrow")
-    public Result BorrowBook(@PathVariable("uid") int uid, @PathVariable("bid") int bid){
-        if(userService.getByUserid(uid) == null){
+    public Result BorrowBook(@PathVariable("uid") String username, @PathVariable("bid") int bid){
+        if(userService.getByUsername(username) == null){
             return ResultFactory.buildFailResult("不存在该用户！");
         }else if(bookService.getById(bid) == null){
             return ResultFactory.buildFailResult("不存在该书籍！");
         }else if(!borrowlistService.canBorrow(bid)){
             return ResultFactory.buildFailResult("该书已被他人借阅！");
         }else{
+            int uid = userService.getByUsername(username).getId();
+            System.out.println("借书成功！");
             borrowlistService.add(uid, bid);
             return ResultFactory.buildSuccessResult(borrowlistService.getAll());
         }        

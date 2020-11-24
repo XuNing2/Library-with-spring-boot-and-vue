@@ -154,11 +154,11 @@ public class LibraryController {
     public Result getLatestItems()throws Exception{
         List<Book> list = bookService.getAll();
         list = bookService.sortDate(list);
-        if(list.size()<6){
+        if(list.size()<10){
             return ResultFactory.buildSuccessResult(list);
         }
         else{
-            return ResultFactory.buildSuccessResult(list.subList(0, 6));
+            return ResultFactory.buildSuccessResult(list.subList(0, 10));
         }
 
     }
