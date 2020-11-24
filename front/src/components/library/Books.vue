@@ -68,7 +68,7 @@
     methods: {
       loadBooks () {
         var _this = this
-        this.$axios.get('/library/books').then(resp => {
+        this.$axios.get('library/books').then(resp => {
           console.log(resp);
           if (resp && resp.data.code === 200) {
             console.log(resp);
