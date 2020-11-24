@@ -32,7 +32,7 @@
       </el-table-column>
       </el-table-column>
       <el-table-column
-        prop="cate"
+        prop="category.name"
         label="类别"
         >
       </el-table-column>
@@ -95,15 +95,7 @@ export default {
           cate: '',
           date: ''
         },
-        tableData: [{
-          id: '',
-          title: '',
-          author: '',
-          press: '',
-          cate: '',
-          date: '',
-          borrow: ''
-        }]
+        tableData: []
       }
     },
     mounted:function() {
@@ -112,10 +104,11 @@ export default {
     methods: {
       init() {
         this.$axios
-        .get('/admin/manageBook')
+        .get('/library/books')
         .then((successResponse => {
             if (successResponse.data.code === 200) {
-              this.tableData = successResponse.data.tableData;
+              console.log(successResponse);
+              this.tableData = successResponse.data.result;
             }
           }))
       },
