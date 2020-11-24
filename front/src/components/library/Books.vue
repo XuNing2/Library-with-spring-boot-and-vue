@@ -44,7 +44,7 @@
     components: {SearchBar},
     data () {
       return {
-        username:'',
+        userid:'',
         m:'借书成功',
         books: [
           {
