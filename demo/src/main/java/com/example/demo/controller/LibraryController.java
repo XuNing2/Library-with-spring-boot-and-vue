@@ -94,6 +94,7 @@ public class LibraryController {
         }
     }
 
+    @PostMapping("api/admin/manageBook/{bid}/deleteBook")
     public Result deleteBookByid(@PathVariable("bid") int bid){
         if(bookService.getById(bid) != null){
             bookService.deleteById(bid);
@@ -103,7 +104,7 @@ public class LibraryController {
         }
     }
 
-
+    @PostMapping("api/admin/manageBook/addBook")
     public Result addBook(@RequestBody Book book){
         System.out.println("-----------------------------测试------------------------------------");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

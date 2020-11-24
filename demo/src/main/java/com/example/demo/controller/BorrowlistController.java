@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 @CrossOrigin
 @RestController
 public class BorrowlistController {
@@ -36,10 +37,16 @@ public class BorrowlistController {
     }
 
     //通过用户id查询该用户借阅记录
-    @GetMapping(value = "api/personalcenter/borrowHistory/{username}")
-    public Result listByUser(@PathVariable("username") String username){
+    @GetMapping(value = "api/personalcenter/borrowHistory")
+    public Result listByUser(@RequestParam("username") String username){
         User user = userService.getByUsername(username);
+        System.out.println(username + "的借阅记录！");
         if(user != null){
+            System.out.println("借阅记录！");
+            System.out.println(user.getId());
+            for(Borrowlist o :borrowlistService.getByUser(user.getId())){
+                System.out.println(o.getBook());
+            }
             return ResultFactory.buildSuccessResult(borrowlistService.getByUser(user.getId()));
         }else{
             return ResultFactory.buildFailResult("不存在该用户！");
@@ -56,7 +63,7 @@ public class BorrowlistController {
     }
 
     @PostMapping(value = "api/library/borrow")
-    public Result BorrowBook(@PathVariable("uid") String username, @PathVariable("bid") int bid){
+    public Result BorrowBook(@RequestParam("username") String username, @RequestParam("bid") int bid){
         if(userService.getByUsername(username) == null){
             return ResultFactory.buildFailResult("不存在该用户！");
         }else if(bookService.getById(bid) == null){
