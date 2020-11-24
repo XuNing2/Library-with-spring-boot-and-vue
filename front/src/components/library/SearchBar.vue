@@ -6,7 +6,8 @@
       prefix-icon="el-icon-search"
       size="small"
       style="width: 400px;margin-right: 10px"
-      v-model="keywords">
+      v-model="keywords"
+      class="input-with-select">
       <el-select v-model="value" slot="prepend" placeholder="请选择">
         <el-option
           v-for="item in searchAttributes"
@@ -19,6 +20,12 @@
     <el-button size="small" type="primary" icon="el-icon-search" @click="searchClick">搜索</el-button>
   </div>
 </template>
+
+<style>
+  .el-select .el-input {
+    width: 130px;
+  }
+</style>
 
 <script>
   export default {
