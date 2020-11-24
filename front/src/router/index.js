@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 // 导入刚才编写的组件
 import AppIndex from '../components/home/AppIndex.vue'
 import Login from '../components/Login.vue'
+import Admin_Login from '../components/Admin_Login.vue'
 import Home from '../components/Home'
 import PersonalCenter from '../components/personalcenter/PersonalCenter'
 import Register from '../components/Register.vue'
@@ -109,6 +110,7 @@ export default new VueRouter({
       name: 'Login',
       component: Login
     },
+  
     {
       path: '/admin',
       name: 'Admin',
@@ -137,7 +139,18 @@ export default new VueRouter({
        meta: {
          requireAuth: true
        },
-      }
+      },
+      {
+        path: '/admin_login',
+        name: 'Admin_Login',
+        component: Admin_Login,
+        
+        meta: {
+          requireAuth: true
+        },
+       }
+
+  
     
     //   children: [
     //     {
