@@ -30,10 +30,10 @@
     </el-form-item>
 
     <el-form-item style="width: 100%">
-      <el-button type="success"  style="width: 40%;background: #505458;border: none" v-on:click="register">立即注册</el-button>
+      <el-button type="info"  style="width: 40%;background: #505458;border: none" v-on:click="register">立即注册</el-button>
     </el-form-item>
     <el-form-item style="width: 100%">
-      <el-button type="info" icon="el-icon-check" style="width: 60%;background: #505458;border: none" v-on:click="admin_to_user">切换到用户登录</el-button>
+      <el-button type="info"  style="width: 60%;background: #505458;border: none" v-on:click="admin_to_user">切换到用户登录</el-button>
     </el-form-item>
   </el-form>
   </body>
