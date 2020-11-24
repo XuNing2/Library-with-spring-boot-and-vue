@@ -23,7 +23,7 @@
       </el-table-column>
       <el-table-column>
         <template slot-scope="scope">
-          <el-button round @click="returnbook(scope.row.book)" class="button">还书</el-button>
+          <el-button round @click="returnbook(scope.row)" class="button">还书</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -40,6 +40,7 @@
         username: '',
         row: '',
         tableData: [{
+          user: '',
           book: '',
           date: '',
           havereturn: ''
@@ -65,6 +66,7 @@
       },
       refresh() {
         this.username = localStorage.getItem('username');
+        // u_id = localStorage.getItem('userid');
         this.$axios
           .get('/personalcenter/borrowHistory?username='+this.username, {})
           .then(successResponse => {
@@ -88,16 +90,25 @@
         // }];
       },
       returnbook(val) {
+        // var u_id = localStorage.getItem('userid');
+        // console.log(u_id);
         this.$axios
-          .post('/personalcenter/returnBook?bookid='+this.tableData.book, {})
+          .get('/personalcenter/returnBook', {
+            b_id: val.book,
+            u_id: val.user,
+            date: val.date,
+            havereturn: val.havereturn
+          })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              console.log(success);
+              console.log("guihuan");
+              console.log(successResponse);
             }
           })
           .catch(failResponse => {
-            console.log(fail);
+            console.log(failResponse);
           })
+          location.reload();
       },
       formatterColumn(row, column) {
         return row.havereturn  == 0 ? '未归还' : "已归还";
