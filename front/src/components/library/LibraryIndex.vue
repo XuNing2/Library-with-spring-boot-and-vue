@@ -21,23 +21,13 @@
       listByCategory () {
         var _this = this
         var cid = this.$refs.sideMenu.cid
-        if(cid === '0'){
-          this.$axios.get('/library/books').then(resp => {
-            if (resp && resp.data.code === 200) {
-              _this.$refs.booksArea.books = resp.data.result
-              _this.$refs.booksArea.currentPage = 1
-            }
-          })
-        }
-        else{
-          var url = 'library/categories/' + cid + '/books'
-          this.$axios.get(url).then(resp => {
-            if (resp && resp.data.code === 200) {
-              _this.$refs.booksArea.books = resp.data.result
-              _this.$refs.booksArea.currentPage = 1
-            }
-          })
-        } 
+        var url = 'library/categories/' + cid + '/books'
+        this.$axios.get(url).then(resp => {
+          if (resp && resp.data.code === 200) {
+            _this.$refs.booksArea.books = resp.data.result
+            _this.$refs.booksArea.currentPage = 1
+          }
+        })
       }
     }
   }

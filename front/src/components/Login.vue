@@ -127,13 +127,13 @@
   .username_rule {
     margin: -20px auto 5px auto;
     text-align: left;
-    color:rgb(78, 117, 156,56);
+    color:rgb(78, 117, 156)56);
     z-index:0;
   }
   .password_rule {
     margin: -20px auto 5px auto;
     text-align: left;
-    color:rgb(78, 117, 156,56);
+    color:rgb(78, 117, 156)56);
     z-index:0;
   }
   .login_remember {
