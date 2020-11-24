@@ -79,7 +79,7 @@
       open(id) {
         this.userid = localStorage.getItem('userid');
         this.$axios
-              .post('/library/borrow', {userid: this.userid,bid: id}).then(resp => {
+              .post('/library/borrow', {book: id,user: this.userid}).then(resp => {
           if (resp && resp.data.code === 200) {
             this.$alert('借书成功', '借书结果', {
               confirmButtonText: '确定',
