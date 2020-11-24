@@ -44,6 +44,7 @@
     components: {SearchBar},
     data () {
       return {
+        username:'',
         m:'借书成功',
         books: [
           {
@@ -76,8 +77,9 @@
         })
       },
       open(id) {
+        this.username = localStorage.getItem('username');
         this.$axios
-              .post('/library/borrow', {id: id}).then(resp => {
+              .post('/library/borrow', {username: username,bid: id}).then(resp => {
           if (resp && resp.data.code === 200) {
             this.$alert('借书成功', '借书结果', {
               confirmButtonText: '确定',
