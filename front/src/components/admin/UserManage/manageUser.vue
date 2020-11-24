@@ -84,6 +84,7 @@ export default {
         .get('/admin/manageUser')
         .then((successResponse => {
             if (successResponse.data.code === 200) {
+              console.log(successResponse.data.result);
               this.tableData = successResponse.data.result;
             }
           }))
@@ -108,20 +109,60 @@ export default {
         document.getElementById("addUserElement2").style.display = 'none';
       },
       submit(){
+        var username = this.tableData[0].username;
+        var id = this.tableData[0].id;
+        var password = this.tableData[0].password;
+        var telephone = this.tableData[0].telephone;
+        var roleid = this.tableData[0].roleid;
+        var rolename = this.tableData[0].rolename;
+        this.tableData[0].id = '';
+        this.tableData[0].password = this.info.password;
+        this.tableData[0].telephone = this.info.telephone;
+        this.tableData[0].username = this.info.username;
+        this.tableData[0].roleid = this.info.role_id;
+        this.tableData[0].rolename = this.find(this.info.role_id);
         console.log(this.info.username);
         this.$axios
-        .post('/admin/manageUser/addUser',{
-          username: this.info.username,
-          password: this.info.password,
-          telephone: this.info.telephone,
-          // role: this.info.role_id
-        })
+        .post('/admin/manageUser/addUser',
+        // {
+        //   username: this.info.username,
+        //   password: this.info.password,
+        //   telephone: this.info.telephone,
+        //   // role: this.info.role_id
+        // }
+        this.tableData[0]
+        )
         .then((successResponse => {
             if (successResponse.data.code === 200) {
               console.log(successResponse);
             }
           }))
+        this.tableData[0].username = username;
+        this.tableData[0].id = id;
+        this.tableData[0].password = password;
+        this.tableData[0].telephone = telephone;
+        this.tableData[0].roleid = roleid;
+        this.tableData[0].rolename = rolename;
           location.reload();
+      },
+      find(val){
+        switch(val){
+          case 1:
+            return '图书管理员';
+            break;
+          case 2:
+            return '书籍管理员';
+            break;
+          case 3:
+            return '用户管理员';
+            break;
+          case 4:
+            return '读者';
+            break;
+          default:
+            return '读者';
+        }
+
       }
     }
 }
