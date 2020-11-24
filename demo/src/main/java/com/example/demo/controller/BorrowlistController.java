@@ -44,9 +44,9 @@ public class BorrowlistController {
         if(user != null){
             System.out.println("借阅记录！");
             System.out.println(user.getId());
-            for(Borrowlist o :borrowlistService.getByUser(user.getId())){
-                System.out.println(o.getBook());
-            }
+            // for(Borrowlist o :borrowlistService.getByUser(user.getId())){
+            //     System.out.println(o.getBook());
+            // }
             return ResultFactory.buildSuccessResult(borrowlistService.getByUser(user.getId()));
         }else{
             return ResultFactory.buildFailResult("不存在该用户！");

@@ -93,9 +93,9 @@
         // var u_id = localStorage.getItem('userid');
         // console.log(u_id);
         this.$axios
-          .get('/personalcenter/returnBook', {
-            b_id: val.book,
-            u_id: val.user,
+          .post('/personalcenter/returnBook', {
+            book: val.book,
+            user: val.user,
             date: val.date,
             havereturn: val.havereturn
           })
