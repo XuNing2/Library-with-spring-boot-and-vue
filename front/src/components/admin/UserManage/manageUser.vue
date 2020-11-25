@@ -119,9 +119,9 @@ export default {
         this.tableData[0].password = this.info.password;
         this.tableData[0].telephone = this.info.telephone;
         this.tableData[0].username = this.info.username;
-        this.tableData[0].roleid = this.info.role_id;
-        this.tableData[0].rolename = this.find(this.info.role_id);
-        console.log(this.info.username);
+        this.tableData[0].role.roleid = this.info.role_id;
+        this.tableData[0].role.rolename = this.find(this.info.role_id);
+        console.log(this.tableData[0].rolename);
         this.$axios
         .post('/admin/manageUser/addUser',
         // {
@@ -141,8 +141,8 @@ export default {
         this.tableData[0].id = id;
         this.tableData[0].password = password;
         this.tableData[0].telephone = telephone;
-        this.tableData[0].roleid = roleid;
-        this.tableData[0].rolename = rolename;
+        this.tableData[0].role.roleid = roleid;
+        this.tableData[0].role.rolename = rolename;
           location.reload();
       },
       find(val){
