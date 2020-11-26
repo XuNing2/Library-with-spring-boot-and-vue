@@ -92,14 +92,9 @@
             })
           }
           else{
-            this.$alert('书库中暂无此书', '借书结果', {
+            this.m = resp.data.message
+            this.$alert(this.m, '借书结果', {
               confirmButtonText: '确定',
-              callback: action => {
-                this.$message({
-                  type: 'info',
-                  message: `action: ${ action }`
-                });
-              }
             })
           }
         })
