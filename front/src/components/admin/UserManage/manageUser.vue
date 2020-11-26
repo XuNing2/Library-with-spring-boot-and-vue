@@ -35,7 +35,7 @@
       <el-button id="addUserElement1" round @click="cancel" style="display: none">取消添加</el-button>
     </div>
     <div id="addUserElement2" style="margin-top: 20px;display: none">
-      <table class="white-pink">
+  <table class="white-pink">
     <label>
       <span>用户名 :</span>
       <input id= "name" name="name" v-model="info.username"/>
@@ -44,7 +44,16 @@
       <span>电话 :</span>
       <input id= "telephone" name="telephone" v-model="info.telephone"/>
       <span>角色 :</span>
-      <input id= "role" name="role" v-model="info.role_id"/>
+      <div>
+        <el-select v-model="info.role_id" placeholder="请选择" >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </div> 
     </label>
     <el-button native-type='submit' round id="submit" @click="submit()">提交信息</el-button>
   </table>
@@ -59,6 +68,13 @@ export default {
     name: 'queryUser',
     data(){
       return {
+        options: [{
+          value: '选项1',
+          label: '读者'
+        }, {
+          value: '选项2',
+          label: '管理员'
+        }],
         info:{
           username: '',
           password: '',
@@ -251,4 +267,5 @@ export default {
          box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
  
 }
+
 </style>
