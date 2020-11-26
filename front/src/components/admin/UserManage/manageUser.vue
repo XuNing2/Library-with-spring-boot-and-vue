@@ -90,15 +90,21 @@ export default {
           }))
       },
       deleteUser(val) {
-        console.log(val);
-        this.$axios
-        .post('/admin/manageUser/'+val+'/deleteUser')
-        .then((successResponse => {
+        this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          console.log(val);
+          this.$axios
+          .post('/admin/manageUser/'+val+'/deleteUser')
+          .then((successResponse => {
             if (successResponse.data.code === 200) {
               console.log(successResponse);
             }
           }))
           location.reload();
+        })
       },
       addUser(){
         document.getElementById("addUserElement1").style.display = '';
