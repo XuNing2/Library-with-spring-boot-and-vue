@@ -1,6 +1,39 @@
 <template>
   <el-container>
-    <el-main style="margin-top: 0px">
+      <el-main style="margin-top: 0px">
+        <el-button round @click="dialogFormVisible = true">添加图书</el-button>
+<el-dialog title="添加图书" :visible.sync="dialogFormVisible">
+  <el-form :model="form">
+    <el-form-item label="ISBN" :label-width="formLabelWidth">
+      <el-input id="id" v-model="info.id" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="书名" :label-width="formLabelWidth">
+      <el-input id="title" v-model="info.title" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="作者" :label-width="formLabelWidth">
+      <el-input id="author" v-model="info.author" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="出版社" :label-width="formLabelWidth">
+      <el-input id="press" v-model="info.press" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="类别" :label-width="formLabelWidth">
+      <el-input id="cate" v-model="info.cate" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="入馆日期" :label-width="formLabelWidth">
+      <el-input id="date" v-model="info.date" auto-complete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
+  <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+  <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
+</el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button round @click="dialogFormVisible = false">取 消</el-button>
+    <el-button native-type='submit' round id="submit" @click="submit()">提交信息</el-button>
+  </div>
+</el-dialog>
+  
+  
   <div id="user1" style="margin-top: 60px;opacity: 0.8;">
     图书信息
   </div>
@@ -48,6 +81,11 @@
         label="借阅状态"
         >
       </el-table-column>
+      <el-table-column
+        prop="cover"
+        label="封面"
+        >
+      </el-table-column>
       <el-table-column>
         <template slot-scope="scope">
           <el-button round @click="deleteBook(scope.row.id)">删除</el-button>
@@ -81,38 +119,7 @@
   <!-- </table> 
     </div> --> 
   </div> 
-  <el-button round @click="dialogFormVisible = true">添加图书</el-button>
-<el-dialog title="添加图书" :visible.sync="dialogFormVisible">
-  <el-form :model="form">
-    <el-form-item label="ISBN" :label-width="formLabelWidth">
-      <el-input id="id" v-model="info.id" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="书名" :label-width="formLabelWidth">
-      <el-input id="title" v-model="info.title" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="作者" :label-width="formLabelWidth">
-      <el-input id="author" v-model="info.author" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="出版社" :label-width="formLabelWidth">
-      <el-input id="press" v-model="info.press" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="类别" :label-width="formLabelWidth">
-      <el-input id="cate" v-model="info.cate" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="入馆日期" :label-width="formLabelWidth">
-      <el-input id="date" v-model="info.date" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
-  <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
-  <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
-</el-form-item>
-    
-  </el-form>
-  <div slot="footer" class="dialog-footer">
-    <el-button round @click="dialogFormVisible = false">取 消</el-button>
-    <el-button native-type='submit' round id="submit" @click="submit()">提交信息</el-button>
-  </div>
-</el-dialog>
+
   </el-main>
   </el-container>
 </template>
