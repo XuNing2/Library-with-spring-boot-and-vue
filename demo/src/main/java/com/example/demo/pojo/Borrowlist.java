@@ -22,6 +22,9 @@ public class Borrowlist implements Comparable<Borrowlist>{
     @Column(name = "date", nullable = false)
     private String date;
 
+    @Column(name = "bookname")
+    private String bookname;
+
     @Column(name = "havereturn")
     private boolean havereturn;
 
@@ -29,9 +32,10 @@ public class Borrowlist implements Comparable<Borrowlist>{
         
     }
 
-    public Borrowlist(int uid, int bid, boolean havereturn){
+    public Borrowlist(int uid, int bid, String bookname, boolean havereturn){
         this.user = uid;
         this.book = bid;
+        this.bookname = bookname;
         this.havereturn = havereturn;
     }
 
@@ -70,6 +74,14 @@ public class Borrowlist implements Comparable<Borrowlist>{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getBookname() {
+        return bookname;
+    }
+
+    public void setBookname(String bookname) {
+        this.bookname = bookname;
     }
     
     
