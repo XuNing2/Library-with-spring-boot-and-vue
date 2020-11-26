@@ -10,14 +10,14 @@
     <br>  
     </el-header>
      <el-container  style="background:#EBEEF5">
-    <el-aside></el-aside>
+   
   <el-main >
 
     <br>
-    <huadongchuang ></huadongchuang>
+    <huadongchuang style="margin-left: 200px;margin-right: 200px"></huadongchuang>
   
   </el-main>
-     <el-aside></el-aside>
+    
      </el-container>
      <br>
 <br>
