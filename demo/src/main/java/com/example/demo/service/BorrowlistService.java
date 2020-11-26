@@ -49,13 +49,18 @@ public class BorrowlistService {
     public boolean canBorrow(int bookid){
         List<Borrowlist> o = borrowlistDAO.findByBook(bookid);
         if(o.size() == 0)
+        {
+            System.out.println("这本书没被借过！");
             return true;
-        List<Borrowlist> borrowlists = borrowlistDAO.findByBookAndHavereturn(bookid, true);
-        return borrowlists == null;
+        }
+            
+        List<Borrowlist> borrowlists = borrowlistDAO.findByBookAndHavereturn(bookid, false);
+        return borrowlists.size() == 0;
     }
 
     public void add(int uid, int bid){
         String bookname = bookService.getById(bid).getTitle();
+        System.out.println(bookname);
         Borrowlist borrowlist = new Borrowlist(uid, bid, bookname, false);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         borrowlist.setDate(df.format(new Date()));

@@ -164,7 +164,7 @@ public class LibraryController {
 
     }
 
-    @PostMapping("/api/admin/content/books/covers")
+    @PostMapping("/api/covers")
     public Result coversUpload(@RequestBody MultipartFile file) throws Exception {
         String folder = "C:/libraryimg";
         File imageFolder = new File(folder);
@@ -176,7 +176,7 @@ public class LibraryController {
         try {
             file.transferTo(f);
             ;
-            String imgURL = "http://localhost:8080/api/file/" + f.getName();
+            String imgURL = "http://localhost:8443/api/file/" + f.getName();
             System.out.println("调用了/api/covers接口");
             return ResultFactory.buildSuccessResult(imgURL);
         } catch (IOException e) {

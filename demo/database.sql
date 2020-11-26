@@ -67,7 +67,7 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `telephone` varchar(255) DEFAULT NULL,
-  `role_id` int(11) UNSIGNED DEFAULT 4,
+  `role_id` int(11) UNSIGNED DEFAULT 2,
   PRIMARY KEY (`id`),
   KEY `user_role_on_id`(`role_id`),
   CONSTRAINT `user_role_on_id` FOREIGN KEY (`role_id`) REFERENCES `role`(`roleid`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -153,7 +153,7 @@ CREATE TABLE `borrowlist` (
 -- ----------------------------
 -- Records of borrowlist
 -- ----------------------------
-INSERT INTO `borrowlist` VALUES ('1', '1', '2020-11-20 12:00:00', '帅的定义', '0');
+INSERT INTO `borrowlist` VALUES ('1', '1', '2020-11-20 12:00:00', '帅的定义', '1');
 INSERT INTO `borrowlist` VALUES ('1', '3', '2020-11-20 12:00:00', '帅的定义',  '1');
 INSERT INTO `borrowlist` VALUES ('1', '2', '2020-11-20 12:00:00', '帅的定义',  '0');
 INSERT INTO `borrowlist` VALUES ('2', '1', '2020-11-20 12:00:00', 'cxk教你打篮球',  '1');

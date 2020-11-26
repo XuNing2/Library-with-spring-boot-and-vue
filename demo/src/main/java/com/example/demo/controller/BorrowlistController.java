@@ -76,9 +76,14 @@ public class BorrowlistController {
             System.out.println(borrowlist.getBook());
             System.out.println("2\n");
             return ResultFactory.buildFailResult("不存在该书籍！");
-        }else if(!borrowlistService.canBorrow(borrowlist.getBook())){
-            System.out.println(borrowlist.getHavereturn());
+        }else if(borrowlistService.gethavereturn(borrowlist.getUser(), false).size() >= 3){
+            System.out.println(borrowlist.getBook());
             System.out.println("3\n");
+            return ResultFactory.buildFailResult("您已借阅三本书了，想借阅请先还书！");
+        }
+        else if(!borrowlistService.canBorrow(borrowlist.getBook())){
+            System.out.println(borrowlist.getHavereturn());
+            System.out.println("4\n");
             return ResultFactory.buildFailResult("该书已被他人借阅！");
         }else{
             // int uid = userService.getByUserid(uid);

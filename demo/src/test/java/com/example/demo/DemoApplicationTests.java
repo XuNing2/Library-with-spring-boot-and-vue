@@ -131,7 +131,18 @@ class DemoApplicationTests {
 		
 		// Borrowlist borrowlist = new Borrowlist(1,1,false);
 
-		borrowlistService.add(1,1);
+		// borrowlistService.add(1,1);
+		List<Borrowlist> o = borrowlistDAO.findByBook(1);
+        if(o.size() == 0)
+			System.out.println("没有对象！");
+		List<Borrowlist> borrowlists = borrowlistDAO.findByBookAndHavereturn(1, false);
+		if(borrowlists == null)
+			System.out.println("没有对象！");
+		for(Borrowlist borrowlist:borrowlists){
+			System.out.println(borrowlist.getUser());
+		}
+		// borrowlistService.add(1, 9);
+		
 		// List<Borrowlist> booklists = borrowlistDAO.findAll();
 		// if(booklists.size() == 0){
 		// 	System.out.println("没有对象！");
