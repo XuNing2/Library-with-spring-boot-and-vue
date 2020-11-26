@@ -3,14 +3,14 @@
   <table class="white-pink">
     <label>
       <span>姓名 :</span>
-      <input id= "name" name="name" v-model="info.name" :readonly="status"/>
+      <input id= "name" name="name" v-model="info.username" :readonly="status"/>
       <span>电话 :</span>
       <input id= "telephone" name="telephone" v-model="info.telephone" :readonly="status"/>
       <span>角色 :</span>
       <input id= "role" name="role" readonly="status"/>
     </label>
     <el-button @click="change()">修改个人信息</el-button>
-    <el-button native-type='submit' id="submit" @click="submit()" :disabled="submit">提交个人信息</el-button>
+    <el-button native-type='submit' id="submit" @click="submit1" :disabled="submit">提交个人信息</el-button>
   </table>
   </el-container>
 </template>
@@ -22,8 +22,9 @@
         status: true,
         submit: true,
         username: "",
+        user: [],
         info: {
-          name: '',
+          username: '',
           telephone: '',
           role: ''
         }
@@ -43,6 +44,7 @@
               document.getElementById("name").value = this.username;
               document.getElementById("telephone").value = resp.data.result.telephone;
               document.getElementById("role").value = resp.data.result.role.rolename;
+              this.user[0] = resp.data.result;
             }
           }))
         // document.getElementById("name").value = this.username;
@@ -50,30 +52,39 @@
         // document.getElementById("role").value = "读者";
       },
       change(){
-        // this.status = false;
-        // this.submit = false;
-        // this.username = localStorage.getItem('username');
+        this.status = false;
+        this.submit = false;
+        this.username = localStorage.getItem('username');
         // console.log(this.username);
-        this.$axios
-        .get('/personalcenter/'+this.username+'/personalInformation')
-        .then((successResponse => {
-            if (successResponse.data.code === 200) {
-              // console.log(successResponse);
-              document.getElementById("name").value = this.username;
-              document.getElementById("telephone").value = successResponse.data.result.telephone;
-              document.getElementById("role").value = successResponse.data.result.role.rolename;
-            }
-          }))
+        // this.$axios
+        // .get('/personalcenter/'+this.username+'/personalInformation')
+        // .then((successResponse => {
+        //     if (successResponse.data.code === 200) {
+        //       // console.log(successResponse);
+        //       document.getElementById("name").value = this.username;
+        //       document.getElementById("telephone").value = successResponse.data.result.telephone;
+        //       document.getElementById("role").value = successResponse.data.result.role.rolename;
+        //     }
+        //   }))
       },
-      submit(){
+      submit1(){
+        this.user[0].telephone = this.info.telephone;
+        this.user[0].username = this.info.username;
         this.$axios
-        .post('/personalcenter/changeInformation',{
-          name: this.info.name,
-          telephone: this.info.telephone,
-          role: this.info.role
-        })
+        .post('/personalcenter/changeInformation',
+        // {
+        //   id: this.info.username,
+        //   telephone: this.info.telephone,
+        //   role: this.info.role
+        // }
+        this.user[0]
+        )
         .then(successResponse => {
+          console.log(successResponse)
           if (successResponse.data.code === 200) {
+            localStorage.setItem('username',this.info.username);
+            this.username = this.info.username;
+            location.reload();
           }
         })
         .catch(failResponse => {
