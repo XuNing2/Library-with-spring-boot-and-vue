@@ -1,7 +1,8 @@
 <template>
   <el-container>
-      <el-main style="margin-top: 0px">
-        <el-button round @click="dialogFormVisible = true">添加图书</el-button>
+    
+ <el-aside style="width: 180px">
+ <el-button round @click="dialogFormVisible = true" style="margin-top: 150px;margin-left: 50px">添加图书</el-button>
 <el-dialog title="添加图书" :visible.sync="dialogFormVisible">
   <el-form :model="form">
     <el-form-item label="ISBN" :label-width="formLabelWidth">
@@ -32,12 +33,15 @@
     <el-button native-type='submit' round id="submit" @click="submit()">提交信息</el-button>
   </div>
 </el-dialog>
-  
-  
+  </el-aside>
+
+
+      <el-main style="margin-top: 0px">
+      
   <div id="user1" style="margin-top: 60px;opacity: 0.8;">
     图书信息
   </div>
-  <div id="user4" style="margin-top: 10px;margin-left: 150px;margin-right: 150px;">
+  <div id="user4" style="margin-top: 10px;margin-left: 20px;margin-right: 150px;">
     <el-table
     :data="tableData"
     border
@@ -121,6 +125,9 @@
   </div> 
 
   </el-main>
+ 
+
+
   </el-container>
 </template>
 
