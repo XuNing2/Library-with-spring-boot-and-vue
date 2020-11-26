@@ -108,7 +108,7 @@ INSERT INTO `category` VALUES ('6', '剧本');
 -- Table structure for book
 -- ----------------------------
 CREATE TABLE `book` (
-  `id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `author` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `press` varchar(255) DEFAULT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id`),
   KEY `book_type_on_id`(`cate_id`),
   CONSTRAINT `book_type_on_id` FOREIGN KEY (`cate_id`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of book

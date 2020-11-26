@@ -108,6 +108,12 @@ public class LibraryController {
     public Result addBook(@RequestBody Book book){
         System.out.println("-----------------------------测试------------------------------------");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(book.getTitle());
+        System.out.println(book.getAuthor());
+        System.out.println(book.getDate());
+        System.out.println(book.getPress());
+        System.out.println(book.getId());
+        System.out.println(book.getCategory());
         book.setDate(df.format(new Date()));
         if(book.getTitle() == null || "".equals(book.getTitle().trim())){
             return ResultFactory.buildFailResult("书名不能为空！");

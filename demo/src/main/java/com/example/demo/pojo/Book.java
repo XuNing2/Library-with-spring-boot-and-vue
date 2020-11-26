@@ -27,6 +27,12 @@ public class Book {
     @Column(name = "date")
     private String date;
 
+    @Column(name = "cover")
+    private String cover;
+
+    @Column(name = "outline")
+    private String outline;
+
     public Book(){
         
     }
