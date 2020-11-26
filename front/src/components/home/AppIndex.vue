@@ -46,7 +46,7 @@
     <br>
     <br>
     
-    <xiaoxitongzhi ></xiaoxitongzhi>
+    <xiaoxitongzhi style="margin-left: 80px" ></xiaoxitongzhi>
     
     </el-aside>
  </el-container>
