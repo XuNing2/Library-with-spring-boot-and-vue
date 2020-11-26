@@ -39,9 +39,8 @@ CREATE TABLE `role` (
 -- Records of role
 -- ----------------------------
 INSERT INTO `role` VALUES ('1','图书馆管理员');
-INSERT INTO `role` VALUES ('2','书籍管理员');
-INSERT INTO `role` VALUES ('3','用户管理员');
-INSERT INTO `role` VALUES ('4','读者');
+INSERT INTO `role` VALUES ('2','读者');
+INSERT INTO `role` VALUES ('3','测试角色');
 
 
 -- ----------------------------
@@ -77,13 +76,13 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '123456', '123456789', 4);
-INSERT INTO `user` VALUES ('2', 'lzh', '123456', '123456789', 3);
+INSERT INTO `user` VALUES ('1', 'admin', '123456', '123456789', 1);
+INSERT INTO `user` VALUES ('2', 'lzh', '123456', '123456789', 1);
 INSERT INTO `user` VALUES ('3', 'lcc', '123456', '123456789', 2);
-INSERT INTO `user` VALUES ('4', 'lj', '123456', '123456789', 1);
+INSERT INTO `user` VALUES ('4', 'lj', '123456', '123456789', 2);
 INSERT INTO `user` VALUES ('5', 'ld', '123456', '123456789', 2);
 INSERT INTO `user` VALUES ('6', 'xn', '123456', '123456789', 3);
-INSERT INTO `user` VALUES ('7', 'wwq', '123456', '123456789', 4);
+INSERT INTO `user` VALUES ('7', 'wwq', '123456', '123456789', 3);
 -- ----------------------------
 -- Table structure for category
 -- ----------------------------
@@ -142,6 +141,7 @@ CREATE TABLE `borrowlist` (
   `b_id` int(11) unsigned NOT NULL,
   `u_id` int(11) unsigned NOT NULL,
   `date` varchar(255) NOT NULL,
+  `bookname` varchar(255) DEFAULT NULL,
   `havereturn` boolean DEFAULT FALSE,
   PRIMARY KEY (`b_id`, `u_id`, `date`),
   Key `borrowed_book_on_id`(`b_id`),
@@ -153,12 +153,12 @@ CREATE TABLE `borrowlist` (
 -- ----------------------------
 -- Records of borrowlist
 -- ----------------------------
-INSERT INTO `borrowlist` VALUES ('1', '1', '2020-11-20 12:00:00', '0');
-INSERT INTO `borrowlist` VALUES ('1', '3', '2020-11-20 12:00:00', '1');
-INSERT INTO `borrowlist` VALUES ('1', '2', '2020-11-20 12:00:00', '0');
-INSERT INTO `borrowlist` VALUES ('2', '1', '2020-11-20 12:00:00', '1');
-INSERT INTO `borrowlist` VALUES ('2', '2', '2020-11-20 12:00:00', '1');
-INSERT INTO `borrowlist` VALUES ('3', '1', '2020-11-20 12:00:00', '1');
-INSERT INTO `borrowlist` VALUES ('2', '3', '2020-11-20 12:00:00', '0');
-INSERT INTO `borrowlist` VALUES ('3', '2', '2020-11-20 12:00:00', '0');
+INSERT INTO `borrowlist` VALUES ('1', '1', '2020-11-20 12:00:00', '帅的定义', '0');
+INSERT INTO `borrowlist` VALUES ('1', '3', '2020-11-20 12:00:00', '帅的定义',  '1');
+INSERT INTO `borrowlist` VALUES ('1', '2', '2020-11-20 12:00:00', '帅的定义',  '0');
+INSERT INTO `borrowlist` VALUES ('2', '1', '2020-11-20 12:00:00', 'cxk教你打篮球',  '1');
+INSERT INTO `borrowlist` VALUES ('2', '2', '2020-11-20 12:00:00', 'cxk教你打篮球',  '1');
+INSERT INTO `borrowlist` VALUES ('3', '1', '2020-11-20 12:00:00', '如何增重',  '1');
+INSERT INTO `borrowlist` VALUES ('2', '3', '2020-11-20 12:00:00', 'cxk教你打篮球',  '0');
+INSERT INTO `borrowlist` VALUES ('3', '2', '2020-11-20 12:00:00', '如何增重',  '0');
 
