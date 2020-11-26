@@ -6,7 +6,7 @@
     style="width: 100%"
     >
       <el-table-column
-        prop="book"
+        prop="bookname"
         label="书名"
         >
       </el-table-column>
@@ -43,7 +43,8 @@
           user: '',
           book: '',
           date: '',
-          havereturn: ''
+          havereturn: '',
+          bboname: ''
         }]
       }
     },
@@ -97,6 +98,7 @@
             book: val.book,
             user: val.user,
             date: val.date,
+            bookname: val.bookname,
             havereturn: val.havereturn
           })
           .then(successResponse => {

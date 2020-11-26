@@ -151,13 +151,10 @@ export default {
             return '图书管理员';
             break;
           case 2:
-            return '书籍管理员';
+            return '读者';
             break;
           case 3:
-            return '用户管理员';
-            break;
-          case 4:
-            return '读者';
+            return '测试角色';
             break;
           default:
             return '读者';
