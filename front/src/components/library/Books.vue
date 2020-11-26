@@ -83,16 +83,10 @@
           if (resp && resp.data.code === 200) {
             this.$alert('借书成功', '借书结果', {
               confirmButtonText: '确定',
-              callback: action => {
-                this.$message({
-                  type: 'info',
-                  message: `action: ${ action }`
-                });
-              }
             })
           }
           else{
-            this.m = resp.data.message
+            this.m = resp.data.message;
             this.$alert(this.m, '借书结果', {
               confirmButtonText: '确定',
             })
