@@ -24,7 +24,7 @@
       <el-input id="date" v-model="info.date" auto-complete="off"></el-input>
     </el-form-item>
     <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
-  <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+  <el-input  id="cover" v-model="info.cover" autocomplete="off" placeholder="图片 URL"></el-input>
   <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
 </el-form-item>
   </el-form>
@@ -144,7 +144,8 @@ export default {
           author: '',
           press: '',
           cate: '',
-          date: ''
+          date: '',
+          cover:''
         },
         tableData: [],
                 dialogFormVisible: false,
@@ -157,6 +158,7 @@ export default {
           type: [],
           resource: '',
           desc: ''
+        
         },
         formLabelWidth: '120px'
 
@@ -206,7 +208,8 @@ export default {
           author: this.info.author,
           press: this.info.press,
           cate: this.info.cate,
-          date: this.info.date
+          date: this.info.date,
+          cover:this.info.cover
         })
         .then((successResponse => {
             if (successResponse.data.code === 200) {
