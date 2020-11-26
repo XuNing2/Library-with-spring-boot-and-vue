@@ -103,12 +103,13 @@
             if (successResponse.data.code === 200) {
               console.log("guihuan");
               console.log(successResponse);
+              this.init();
             }
           })
           .catch(failResponse => {
             console.log(failResponse);
           })
-          location.reload();
+          // location.reload();
       },
       formatterColumn(row, column) {
         return row.havereturn  == 0 ? '未归还' : "已归还";
