@@ -4,7 +4,7 @@
       :data="tableData"
       style="width: 65%"
       max-height="400"
-     
+       border
       >
       <el-table-column
         prop="information"

@@ -169,7 +169,7 @@ export default {
     },
     methods: {
       uploadImg () {
-      this.form.cover = this.$refs.imgUpload.url
+      this.info.cover = this.$refs.imgUpload.url
           },
       init() {
         this.$axios
