@@ -15,6 +15,9 @@ public class BorrowlistService {
     @Autowired
     private BorrowlistDAO borrowlistDAO;
 
+    @Autowired
+    private BookService bookService;
+
     public List<Borrowlist> getAll(){
         return borrowlistDAO.findAll();
     }
@@ -52,7 +55,8 @@ public class BorrowlistService {
     }
 
     public void add(int uid, int bid){
-        Borrowlist borrowlist = new Borrowlist(uid, bid, false);
+        String bookname = bookService.getById(bid).getTitle();
+        Borrowlist borrowlist = new Borrowlist(uid, bid, bookname, false);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         borrowlist.setDate(df.format(new Date()));
         borrowlistDAO.save(borrowlist);
