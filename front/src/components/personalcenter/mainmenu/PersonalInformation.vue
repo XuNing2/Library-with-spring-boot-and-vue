@@ -9,8 +9,9 @@
       <span>角色 :</span>
       <input id= "role" name="role" readonly="status"/>
     </label>
-    <el-button @click="change()">修改个人信息</el-button>
-    <el-button native-type='submit' id="submit" @click="submit1" :disabled="submit">提交个人信息</el-button>
+    <el-button id="ch" @click="change()">修改个人信息</el-button>
+    <el-button native-type='submit' id="submit" @click="submit1" :disabled="submit" style="display: none">提交个人信息</el-button>
+    <el-button id="back" @click="back" :disabled="submit" style="display: none">返回</el-button>
   </table>
   </el-container>
 </template>
@@ -54,6 +55,9 @@
       change(){
         this.status = false;
         this.submit = false;
+        document.getElementById('submit').style.display = '';
+        document.getElementById('back').style.display = '';
+        document.getElementById('ch').style.display = 'none';
         this.username = localStorage.getItem('username');
         // console.log(this.username);
         // this.$axios
@@ -89,6 +93,14 @@
         })
         .catch(failResponse => {
         })
+      },
+      back(){
+        this.status = true;
+        this.submit = true;
+        document.getElementById('submit').style.display = 'none';
+        document.getElementById('back').style.display = 'none';
+        document.getElementById('ch').style.display = '';
+        this.init();
       }
     }
   }
