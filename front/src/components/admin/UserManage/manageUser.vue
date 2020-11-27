@@ -44,7 +44,7 @@
             <el-input v-model="info.telephone" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="角色：" :label-width="formLabelWidth">
-            <el-select v-model="info.role_id" placeholder="请选择角色">
+            <el-select v-model="info.role_id" placeholder="请选择角色" @focus="getAllRole">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -97,13 +97,13 @@ export default {
       return {
         dialogFormVisible: false,
         options: [{
-          value: '选项1',
+          value: '1',
           label: '读者'
         }, {
-          value: '选项2',
-          label: '读书管理员'
+          value: '2',
+          label: '图书管理员'
         }, {
-          value: '选项3',
+          value: '3',
           label: '测试角色'
         }],
         info:{
@@ -135,6 +135,14 @@ export default {
               this.tableData = successResponse.data.result;
             }
           }))
+      },
+      getAllRole(){
+        var _this = this
+        this.$axios.get('admin/manageUser/getRole').then(resp => {
+          if (resp && resp.data.code === 200) {
+            _this.options = resp.data.result
+          }
+        })
       },
       deleteUser(val) {
         this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
