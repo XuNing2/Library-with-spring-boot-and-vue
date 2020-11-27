@@ -101,7 +101,10 @@ export default {
           label: '读者'
         }, {
           value: '选项2',
-          label: '管理员'
+          label: '读书管理员'
+        }, {
+          value: '选项3',
+          label: '测试角色'
         }],
         info:{
           username: '',
