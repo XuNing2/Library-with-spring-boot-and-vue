@@ -66,7 +66,7 @@
               // goto();
               this.$router.replace({path: '/admin'});
               localStorage.setItem('username',this.admin_loginForm.username)
-              localStorage.setItem('userid',successResponse.data.result.id)
+              //localStorage.setItem('userid',successResponse.data.result.id)
                localStorage.setItem('role_id',2)
             }
             

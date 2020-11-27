@@ -56,6 +56,7 @@
     },
     methods: {
       login () {
+        var _this = this
         this.$axios
           .post('/login', {
             username: this.loginForm.username,
@@ -64,10 +65,13 @@
           .then(successResponse => {
             if (successResponse.data.code === 200) {
               // goto();
+              _this.$store.commit('login', _this.loginForm)
+              var path = this.$route.query.redirect
+
               this.$router.replace({path: '/index'});
               localStorage.setItem('username',this.loginForm.username)
               localStorage.setItem('userid',successResponse.data.result.id)
-              localStorage.setItem('role_id',1)
+             // localStorage.setItem('role_id',1)
             }
           })
           .catch(failResponse => {

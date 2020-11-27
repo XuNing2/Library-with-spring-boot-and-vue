@@ -136,18 +136,14 @@ export default new VueRouter({
        name: 'Register',
        component: Register,
        
-       meta: {
-         requireAuth: true
-       },
+      
       },
       {
         path: '/admin_login',
         name: 'Admin_Login',
         component: Admin_Login,
         
-        meta: {
-          requireAuth: true
-        },
+
        }
 
   
