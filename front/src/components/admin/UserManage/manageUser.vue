@@ -31,11 +31,38 @@
       </el-table-column>
     </el-table>
     <div style="margin-top: 20px">
-      <el-button round @click="addUser">添加用户</el-button>
-      <el-button id="addUserElement1" round @click="cancel" style="display: none">取消添加</el-button>
+      <el-button round @click="dialogFormVisible = true">添加用户</el-button>
+      <el-dialog title="添加用户" :visible.sync="dialogFormVisible">
+        <el-form :model="form">
+          <el-form-item label="用户名：" :label-width="formLabelWidth">
+            <el-input v-model="info.username" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="密码：" :label-width="formLabelWidth">
+            <el-input v-model="info.password" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="电话：" :label-width="formLabelWidth">
+            <el-input v-model="info.telephone" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="角色：" :label-width="formLabelWidth">
+            <el-select v-model="info.role_id" placeholder="请选择角色">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="submit()">提交信息</el-button>
+        </div>
+      </el-dialog>
+      <!-- <el-button id="addUserElement1" round @click="cancel" style="display: none">取消添加</el-button> -->
     </div>
-    <div id="addUserElement2" style="margin-top: 20px;display: none">
-  <table class="white-pink">
+    <!-- <div id="addUserElement2" style="margin-top: 20px;display: none"> -->
+  <!-- <table class="white-pink">
     <label>
       <span>用户名 :</span>
       <input id= "name" name="name" v-model="info.username"/>
@@ -56,8 +83,8 @@
       </div> 
     </label>
     <el-button native-type='submit' round id="submit" @click="submit()">提交信息</el-button>
-  </table>
-    </div>
+  </table> -->
+    <!-- </div> -->
   </div>
   </el-main>
   </el-container>
@@ -68,6 +95,7 @@ export default {
     name: 'queryUser',
     data(){
       return {
+        dialogFormVisible: false,
         options: [{
           value: '选项1',
           label: '读者'
@@ -122,14 +150,14 @@ export default {
           location.reload();
         })
       },
-      addUser(){
-        document.getElementById("addUserElement1").style.display = '';
-        document.getElementById("addUserElement2").style.display = '';
-      },
-      cancel(){
-        document.getElementById("addUserElement1").style.display = 'none';
-        document.getElementById("addUserElement2").style.display = 'none';
-      },
+      // addUser(){
+      //   document.getElementById("addUserElement1").style.display = '';
+      //   document.getElementById("addUserElement2").style.display = '';
+      // },
+      // cancel(){
+      //   document.getElementById("addUserElement1").style.display = 'none';
+      //   document.getElementById("addUserElement2").style.display = 'none';
+      // },
       submit(){
         var username = this.tableData[0].username;
         var id = this.tableData[0].id;
@@ -181,7 +209,6 @@ export default {
           default:
             return '读者';
         }
-
       }
     }
 }
