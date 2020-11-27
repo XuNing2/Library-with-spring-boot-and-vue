@@ -66,7 +66,9 @@
               // goto();
               this.$router.replace({path: '/index'});
               localStorage.setItem('username',this.admin_loginForm.username)
+              localStorage.setItem('userid',successResponse.data.result.id)
             }
+            
           })
           .catch(failResponse => {
           })
