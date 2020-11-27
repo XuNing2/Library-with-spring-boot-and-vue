@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.dao.RoleDAO;
 import com.example.demo.pojo.Role;
 
@@ -10,6 +12,10 @@ import org.springframework.stereotype.Service;
 public class RoleService {
     @Autowired
     RoleDAO roleDAO;
+
+    public List<Role> getAll(){
+        return roleDAO.findAll();
+    }
 
     public boolean isExistByName(String roleName){
         Role role  = getByRoleName(roleName);

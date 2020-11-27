@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.dao.CategoryDAO;
 import com.example.demo.pojo.Category;
 
@@ -10,6 +12,10 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
     @Autowired
     private CategoryDAO categoryDAO;
+
+    public List<Category> getAll(){
+        return categoryDAO.findAll();
+    }
 
     public boolean isExist(String name){
         Category category = getByName(name);

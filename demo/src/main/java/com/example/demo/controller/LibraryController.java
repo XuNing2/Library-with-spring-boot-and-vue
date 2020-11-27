@@ -47,6 +47,10 @@ public class LibraryController {
         return ResultFactory.buildSuccessResult(list);
     }
 
+    public Result getAllCategory(){
+        return ResultFactory.buildSuccessResult(categoryService.getAll());
+    }
+
     //根据书籍类别来查询书籍
     @GetMapping(value = "api/library/categories/{cid}/books")
     public Result listBookByCategory(@PathVariable("cid") int cid){

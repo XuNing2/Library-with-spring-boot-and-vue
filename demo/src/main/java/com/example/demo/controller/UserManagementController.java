@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.pojo.User;
 import com.example.demo.result.Result;
 import com.example.demo.result.ResultFactory;
+import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,13 @@ import java.util.List;
 public class UserManagementController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    RoleService roleService;
+
+    public Result getAllRole(){
+        return ResultFactory.buildSuccessResult(roleService.getAll());
+    }
 
     // @ResponseBody
     // @PostMapping("/personalcenter/changeInformation")
